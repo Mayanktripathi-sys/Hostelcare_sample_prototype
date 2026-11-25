@@ -1,0 +1,1195 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><title>HostelCare: showcase</title>
+<meta name="theme-color" content="#f5f7fb">
+<script>(function(){var t=null;try{t=localStorage.getItem("hc_theme")}catch(e){}if(t!=="dark"&&t!=="light")t=matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light";document.documentElement.dataset.theme=t})()</script>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Syne:wght@800&family=Space+Mono&display=swap">
+<style>:root{--bg:#f5f7fb;--card:#fff;--tx:#1b2333;--mu:#667085;--bd:#e3e8f0;--pr:#4338ca;--prt:#fff;--ok:#157347;--wa:#946200;--in:#1d5fd1;--er:#c0362c;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0f1420;--card:#171e2e;--tx:#e8ecf4;--mu:#9aa5b8;--bd:#283148;--pr:#8b8cf5;--prt:#0f1420;--ok:#4cc38a;--wa:#e5b84b;--in:#6aa3ff;--er:#ff7d72}}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--tx);font:15px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--card);border-bottom:1px solid var(--bd);display:flex;align-items:center;gap:8px;padding:10px 14px;flex-wrap:wrap}
+header b{font-size:18px;cursor:pointer;margin-right:auto}nav{display:flex;gap:6px;flex-wrap:wrap}
+main{max-width:1080px;margin:0 auto;padding:14px}
+button,.btn{font:inherit;border:1px solid var(--bd);background:var(--card);color:var(--tx);border-radius:8px;padding:8px 12px;cursor:pointer;min-height:40px}
+button.p{background:var(--pr);color:var(--prt);border-color:var(--pr)}button.d{color:var(--er)}
+input,select,textarea{font:inherit;width:100%;padding:9px;border:1px solid var(--bd);border-radius:8px;background:var(--bg);color:var(--tx);margin:4px 0 10px}
+label{font-size:13px;color:var(--mu)}.card{background:var(--card);border:1px solid var(--bd);border-radius:12px;padding:14px;margin-bottom:12px}
+.g{display:grid;gap:12px;grid-template-columns:repeat(auto-fill,minmax(210px,1fr))}.row{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.st{font-size:26px;font-weight:700}.mu{color:var(--mu);font-size:13px}.hero{padding:28px 6px;text-align:center}.hero h1{font-size:28px;margin:0 0 8px}
+.bd{display:inline-block;padding:2px 9px;border-radius:99px;font-size:12px;font-weight:600;border:1px solid currentColor}
+.Submitted,.Acknowledged{color:var(--wa)}.InProgress{color:var(--in)}.Resolved,.Closed{color:var(--ok)}.Urgent{color:var(--er)}
+.tw{overflow-x:auto}table{border-collapse:collapse;width:100%;min-width:640px}th,td{text-align:left;padding:8px;border-bottom:1px solid var(--bd);font-size:13px}tr.k{cursor:pointer}
+.bar{height:10px;background:var(--pr);border-radius:5px}.msg{padding:8px 10px;border-radius:10px;margin:6px 0;background:var(--bg);border:1px solid var(--bd)}.msg.i{border-style:dashed}
+.tag{background:#fde68a;color:#5c4400;padding:1px 7px;border-radius:6px;font-size:11px}#toast{position:fixed;bottom:calc(16px + env(safe-area-inset-bottom,0px));left:50%;transform:translateX(-50%);background:var(--tx);color:var(--bg);padding:10px 16px;border-radius:10px;z-index:9;display:none;max-width:90%}
+h2,h3,header b{font-family:Syne,Impact,system-ui,sans-serif;letter-spacing:-.03em}header{z-index:5}main{position:relative;z-index:1}
+#gl{position:fixed;inset:0;width:100vw;height:100vh;height:100dvh;pointer-events:none;z-index:0;display:none}
+body.lp{background:var(--lbg);color:var(--lfg)}body.lp main{padding:0;max-width:none}body.lp header{background:transparent;border-color:transparent;color:var(--lfg)}body.lp header button{background:transparent;color:var(--lfg);border-color:var(--lfg)}
+.lscrim{position:fixed;left:0;right:0;bottom:0;height:46vh;pointer-events:none;opacity:0;background:linear-gradient(to top,var(--lbg) 8%,transparent)}
+.lh{position:fixed;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;pointer-events:none}
+.lh h1{display:flex;margin:0;font:800 min(7.5vw,15rem)/.85 Syne,Impact,sans-serif;letter-spacing:-.07em;text-transform:uppercase;white-space:nowrap}.lh h1 span:first-child{color:var(--lac)}
+@media(max-width:767px){.lh h1{flex-direction:column;align-items:center;font-size:12.5vw;line-height:.9}}
+.lh p,.lc p,.lcta small{font:400 .8rem/1.7 "Space Mono",ui-monospace,monospace;letter-spacing:.04em}.lh p{position:absolute;bottom:calc(2rem + env(safe-area-inset-bottom,0px));left:max(1.25rem,4vw);text-transform:uppercase}
+.lc{position:fixed;bottom:calc(11vh + env(safe-area-inset-bottom,0px));left:max(1.25rem,4vw);width:min(24rem,calc(100vw - 2.5rem));opacity:0;pointer-events:none;padding-left:1rem;border-left:2px solid var(--lac)}
+.lc.r{left:auto;right:max(1.25rem,4vw);border:0;border-right:2px solid var(--lac);padding:0 1rem 0 0;text-align:right}.lc i{font:normal 400 .75rem "Space Mono",monospace;letter-spacing:.14em;color:var(--lac)}
+.lc h2{font:800 clamp(1.8rem,4.4vw,3.2rem)/.95 Syne,Impact,sans-serif;letter-spacing:-.04em;text-transform:uppercase;margin:.4rem 0 .7rem}
+@media(max-width:767px){.lc,.lc.r{left:1.25rem;right:1.25rem;width:auto;text-align:left;border:0;border-left:2px solid var(--lac);padding:0 0 0 1rem;bottom:calc(6vh + env(safe-area-inset-bottom,0px))}}
+.lcta{position:fixed;inset:0;display:flex;flex-direction:column;justify-content:flex-end;padding:0 max(1.25rem,4vw) calc(9vh + env(safe-area-inset-bottom,0px));opacity:0;pointer-events:none}
+.lcta h2{font:800 clamp(2.8rem,10vw,9rem)/.86 Syne,Impact,sans-serif;letter-spacing:-.06em;text-transform:uppercase;margin:0 0 1.4rem}
+.lcta button{pointer-events:auto;background:transparent;color:inherit;border:2px solid currentColor;border-radius:0;padding:12px 18px;font:400 .85rem "Space Mono",monospace;letter-spacing:.12em;text-transform:uppercase;min-height:48px}.lcta button:hover,.lcta button:focus-visible{background:var(--lfg);color:var(--lbg);outline:0}
+.lcta .ctabox{pointer-events:inherit;align-self:flex-start;width:min(100%,36rem);box-sizing:border-box;background:rgba(10,10,12,.86);color:#fff;border:1px solid rgba(255,255,255,.22);border-top:3px solid #CCFF00;padding:16px;-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);box-shadow:0 18px 48px rgba(0,0,0,.35)}
+.lcta .ctabox .row{display:flex;flex-wrap:wrap;gap:10px}
+.lcta .ctabox button{pointer-events:inherit;flex:1 1 9.5rem;background:rgba(255,255,255,.08);color:#fff;border:1.5px solid rgba(255,255,255,.55);border-radius:0;min-height:48px}
+.lcta .ctabox button.pri{background:#CCFF00;color:#0A0A0C;border-color:#CCFF00;font-weight:700}
+.lcta .ctabox button:hover,.lcta .ctabox button:focus-visible{background:#fff;color:#0A0A0C;border-color:#fff;outline:0}
+.lcta .ctabox button.pri:hover,.lcta .ctabox button.pri:focus-visible{background:#e4ff6a;border-color:#e4ff6a}
+.lcta .ctabox small{display:block;margin-top:12px;color:rgba(255,255,255,.78)}
+@media(max-width:767px){.lcta .ctabox{width:100%}.lcta .ctabox button{flex:1 1 100%}}
+.cue{position:absolute;bottom:calc(2rem + env(safe-area-inset-bottom,0px));right:max(1.25rem,4vw);display:flex;align-items:center;gap:.7rem;font:400 .75rem "Space Mono",monospace;letter-spacing:.14em;text-transform:uppercase}.cue span{width:2px;height:44px;background:currentColor;transform-origin:top;animation:cue 1.6s ease-in-out infinite}@keyframes cue{0%{transform:scaleY(0)}60%{transform:scaleY(1)}100%{transform:scaleY(1);opacity:0}}@media(prefers-reduced-motion:reduce){.cue span{animation:none}}
+/* ---- additions ---- */
+.logo{font-family:Syne,Impact,system-ui,sans-serif;letter-spacing:-.03em;font-size:18px;font-weight:800;margin-right:auto;border:0!important;background:none!important;padding:4px 2px;color:inherit}
+.narrow{max-width:440px;margin:auto}.wide{max-width:520px;margin:auto}
+button:disabled{opacity:.55;cursor:progress}
+:focus-visible{outline:2px solid var(--pr);outline-offset:2px}
+body.lp :focus-visible{outline-color:var(--lfg)}
+.unread{font-weight:700}.mini{display:flex;align-items:flex-end;gap:3px;height:56px}.mini i{flex:1;background:var(--pr);border-radius:3px 3px 0 0;min-height:2px}
+details.card summary{cursor:pointer}details.card form{margin-top:10px}
+.chk{display:flex;gap:8px;align-items:center;margin:4px 0 10px}.chk input{width:auto;margin:0}
+.thumbs{display:flex;gap:8px;flex-wrap:wrap}.thumbs img{width:96px;height:96px;object-fit:cover;border-radius:8px;border:1px solid var(--bd)}
+.err{color:var(--er)}a.btn{display:inline-block;text-decoration:none;line-height:22px}
+
+#demo{background:#fef3c7;color:#78350f;font:12px/1.4 system-ui,sans-serif;padding:6px 12px;text-align:center}@media(prefers-color-scheme:dark){#demo{background:#422006;color:#fde68a}}
+
+/* ===== v2: theme, menu, scroll guide ===== */
+:root[data-theme="dark"]{color-scheme:dark;--bg:#0f1420;--card:#171e2e;--tx:#e8ecf4;--mu:#9aa5b8;--bd:#283148;--pr:#8b8cf5;--prt:#0f1420;--ok:#4cc38a;--wa:#e5b84b;--in:#6aa3ff;--er:#ff7d72}
+:root[data-theme="light"]{color-scheme:light}
+:root[data-theme="light"] #demo{background:#fef3c7;color:#78350f}
+:root[data-theme="dark"] #demo{background:#422006;color:#fde68a}
+:root[data-theme="light"] body:not(.lp) #gl{opacity:.07!important}
+.card,header,input,select,textarea{transition:background-color .25s,border-color .25s,color .25s}
+[hidden]{display:none!important}
+body.mo,body.gl{overflow:hidden}
+.ib{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-width:44px;min-height:44px;padding:8px 14px;border-radius:999px;position:relative}
+.ib svg{width:20px;height:20px;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;flex:none}
+#themeBtn{padding:8px}#themeBtn .sun{display:none}
+:root[data-theme="dark"] #themeBtn .sun{display:block}:root[data-theme="dark"] #themeBtn .moon{display:none}
+#themeBtn svg{transition:transform .4s cubic-bezier(.2,.8,.2,1)}#themeBtn:active svg{transform:rotate(40deg) scale(.9)}
+.bars{width:18px;height:12px;position:relative;display:block;flex:none}
+.bars::before,.bars::after{content:"";position:absolute;left:0;right:0;height:2px;background:currentColor;border-radius:2px;transition:transform .25s}
+.bars::before{top:1px}.bars::after{bottom:1px}
+#menuBtn[aria-expanded="true"] .bars::before{transform:translateY(4px) rotate(45deg)}
+#menuBtn[aria-expanded="true"] .bars::after{transform:translateY(-4px) rotate(-45deg)}
+.mdot{position:absolute;top:7px;right:8px;width:10px;height:10px;border-radius:50%;background:var(--er);border:2px solid var(--card);display:none}
+body.lp .mdot{border-color:var(--lbg)}
+
+.card[data-act]{transition:transform .15s,box-shadow .15s}.card[data-act]:hover{transform:translateY(-2px);box-shadow:0 6px 18px rgba(0,0,0,.12)}.card[data-act]:active{transform:scale(.98)}
+/* app menu */
+.mscrim{position:fixed;inset:0;z-index:30;background:rgba(8,10,18,.55);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);opacity:0;pointer-events:none;transition:opacity .28s}
+.amenu{position:fixed;top:0;left:0;bottom:0;width:min(400px,100vw);z-index:31;background:var(--card);color:var(--tx);border-right:1px solid var(--bd);display:flex;flex-direction:column;transform:translateX(-104%);transition:transform .34s cubic-bezier(.2,.8,.2,1),visibility 0s .34s;visibility:hidden;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+body.mo .mscrim{opacity:1;pointer-events:auto}
+body.mo .amenu{transform:none;visibility:visible;transition:transform .34s cubic-bezier(.2,.8,.2,1),visibility 0s}
+.mh{display:flex;align-items:center;gap:12px;padding:16px 16px 8px}
+.mwho{display:flex;align-items:center;gap:12px;flex:1;min-width:0}
+.mwho b{display:block;font-size:16px}.mwho small{display:block;color:var(--mu);font-size:13px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.av{width:46px;height:46px;border-radius:14px;background:var(--pr);color:var(--prt);display:grid;place-items:center;font:800 17px Syne,system-ui,sans-serif;flex:none}
+.av.g{background:var(--bg);color:var(--mu);border:1px solid var(--bd)}.av svg{width:22px;height:22px;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.role{display:inline-block;margin-top:2px;font-size:11px;font-weight:600;color:var(--pr);border:1px solid currentColor;border-radius:99px;padding:0 8px}
+.ms{padding:6px 16px 10px}.ms input{margin:0;border-radius:12px;padding:11px 12px 11px 38px;background:var(--bg) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23889' stroke-width='2' stroke-linecap='round'%3E%3Ccircle cx='11' cy='11' r='7'/%3E%3Cpath d='M20 20l-4-4'/%3E%3C/svg%3E") 11px 50%/18px no-repeat}
+#mlist{flex:1;overflow-y:auto;padding:4px 10px 10px;overscroll-behavior:contain}
+.mg{font:700 13px system-ui,sans-serif;color:var(--mu);margin:14px 8px 6px}
+.mi{display:flex;align-items:center;gap:12px;width:100%;text-align:left;border:0;background:none;border-radius:14px;padding:8px;min-height:56px;position:relative;opacity:0;transform:translateX(16px)}
+body.mo .mi{opacity:1;transform:none;transition:opacity .3s calc(var(--i)*38ms + 110ms),transform .3s calc(var(--i)*38ms + 110ms),background-color .15s}
+.mi svg{width:40px;height:40px;padding:10px;border-radius:12px;background:var(--bg);border:1px solid var(--bd);stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;flex:none;transition:background-color .15s,color .15s,border-color .15s,transform .2s}
+.mi span{flex:1;min-width:0}.mi b{display:block;font-size:15px}.mi small{display:block;color:var(--mu);font-size:12.5px;line-height:1.3}
+.mi:hover,.mi:focus-visible{background:var(--bg)}
+.mi:hover svg,.mi:focus-visible svg{background:var(--pr);color:var(--prt);border-color:var(--pr);transform:scale(1.06)}
+.mi:active{transform:scale(.985)!important}
+.mi[aria-current="page"]{background:var(--bg)}.mi[aria-current="page"]::before{content:"";position:absolute;left:-10px;top:14px;bottom:14px;width:4px;border-radius:0 4px 4px 0;background:var(--pr)}
+.mi[aria-current="page"] svg{color:var(--pr);border-color:var(--pr)}
+.mi.dg{color:var(--er)}.mi.dg small{color:var(--mu)}
+.cnt{font-style:normal;font-size:12px;font-weight:700;background:var(--er);color:#fff;border-radius:99px;min-width:22px;text-align:center;padding:1px 7px}
+.mnone{padding:14px 8px}
+.mf{padding:10px 16px 14px;border-top:1px solid var(--bd);color:var(--mu);font-size:12.5px;display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+kbd{font:600 11.5px ui-monospace,Menlo,monospace;background:var(--bg);border:1px solid var(--bd);border-bottom-width:2px;border-radius:6px;padding:1px 6px;color:var(--tx)}
+@media(pointer:coarse){.mf{display:none}}
+
+/* scroll guide popup */
+.gd{position:fixed;inset:0;z-index:40;display:grid;place-items:center;padding:16px}
+.gd-b{position:absolute;inset:0;background:rgba(6,8,14,.62);backdrop-filter:blur(5px);-webkit-backdrop-filter:blur(5px);opacity:0;transition:opacity .25s}
+.gd-c{position:relative;width:min(440px,100%);max-height:calc(100dvh - 32px);overflow:auto;background:var(--card);color:var(--tx);border:1px solid var(--bd);border-radius:18px;padding:22px;opacity:0;transform:translateY(16px) scale(.98);transition:opacity .25s,transform .3s cubic-bezier(.2,.8,.2,1)}
+.gd.on .gd-b{opacity:1}.gd.on .gd-c{opacity:1;transform:none}
+.gd-c h2{margin:0 0 6px;font-size:24px}.gd-c>p{margin:0 0 14px}
+.gd-l{list-style:none;margin:0 0 14px;padding:0;display:grid;gap:8px}
+.how{display:flex;gap:12px;align-items:center;border:1px solid var(--bd);border-radius:12px;padding:10px 12px;background:var(--bg)}
+.how b{display:block;font-size:14px}.how small{display:block;color:var(--mu);font-size:12.5px;line-height:1.35}
+.gd-c:not(.t) .how.mouse,.gd-c.t .how.touch{border-color:var(--pr);box-shadow:0 0 0 1px var(--pr) inset}
+.ico{width:44px;height:44px;flex:none;display:grid;place-items:center;color:var(--pr)}
+.ico svg{width:34px;height:34px;stroke:currentColor;fill:none;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.wheel{animation:wh 1.5s ease-in-out infinite}@keyframes wh{0%{transform:translateY(0);opacity:1}70%{transform:translateY(5px);opacity:0}100%{opacity:0}}
+.swipe{animation:sw 1.6s ease-in-out infinite}@keyframes sw{0%{transform:translateY(5px);opacity:0}30%{opacity:1}100%{transform:translateY(-6px);opacity:0}}
+.keys{display:flex;gap:3px;flex-wrap:wrap;width:44px;justify-content:center}
+.gd-s{list-style:none;margin:0 0 14px;padding:0;display:flex;gap:6px;counter-reset:s}
+.gd-s li{flex:1;counter-increment:s;font-size:12.5px;text-align:center;border:1px solid var(--bd);border-radius:10px;padding:6px 2px}
+.gd-s li::before{content:counter(s);display:block;font:800 15px Syne,system-ui,sans-serif;color:var(--pr)}
+.gd-c button.p{width:100%;min-height:46px;font-weight:600}
+@media(prefers-reduced-motion:reduce){.amenu,.mscrim,.gd-c,.gd-b,.mi,.mi svg,.bars::before,.bars::after,#themeBtn svg{transition:none!important}.wheel,.swipe{animation:none}}
+
+/* ===== v3: interactive polish (post-login screens only) ===== */
+body:not(.lp) main{padding-bottom:92px}
+.qa{display:grid;gap:10px;grid-template-columns:repeat(2,1fr);margin:0 0 14px}
+.cats{display:grid;gap:10px;grid-template-columns:repeat(auto-fill,minmax(150px,1fr))}
+.qa button,.cat{display:flex;flex-direction:column;align-items:flex-start;gap:4px;text-align:left;min-height:88px;padding:12px;border-radius:14px;transition:transform .15s,box-shadow .15s,border-color .15s}
+.qa .e,.cat .ce{font-size:24px;line-height:1.1}
+.qa small{color:var(--mu);font-size:12px;line-height:1.3}.qa button.p small{color:inherit;opacity:.85}
+.qa button:hover,.cat:hover{transform:translateY(-2px);box-shadow:0 6px 18px rgba(0,0,0,.14);border-color:var(--pr)}
+.qa button:active,.cat:active{transform:scale(.97)}
+.stp{display:flex;margin:12px 0;padding-bottom:2px}
+.g2{grid-template-columns:repeat(2,1fr)}
+.stp .s{flex:1;min-width:0;text-align:center;font-size:10px;line-height:1.2;color:var(--mu);position:relative;padding:0 1px}.stp .s span{display:block;overflow-wrap:anywhere}
+.stp .s i{display:grid;place-items:center;width:26px;height:26px;margin:0 auto 4px;border-radius:50%;border:2px solid var(--bd);font-style:normal;font-weight:700;font-size:12px;background:var(--card);position:relative;z-index:1;transition:background-color .3s,border-color .3s}
+.stp .s::before{content:"";position:absolute;top:12px;left:-50%;width:100%;height:2px;background:var(--bd)}
+.stp .s:first-child::before{display:none}
+.stp .s.done::before,.stp .s.cur::before{background:var(--pr)}
+.stp .s.done i{background:var(--pr);color:var(--prt);border-color:var(--pr)}
+.stp .s.cur i{border-color:var(--pr);color:var(--pr);box-shadow:0 0 0 4px rgba(99,102,241,.25)}
+.stp .s.cur{color:var(--tx);font-weight:600}
+.fab{position:fixed;right:max(16px,env(safe-area-inset-right,0px));bottom:calc(18px + env(safe-area-inset-bottom,0px));z-index:6;width:56px;height:56px;border-radius:50%;padding:0;font-size:30px;line-height:1;box-shadow:0 8px 22px rgba(0,0,0,.28);display:none}
+.fab.on{display:grid;place-items:center}
+.bar{transition:width .8s cubic-bezier(.2,.8,.2,1)}
+@media(prefers-reduced-motion:no-preference){
+.rise{animation:rise .45s cubic-bezier(.2,.8,.2,1) backwards;animation-delay:calc(var(--r,0)*55ms)}
+@keyframes rise{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+.fab.on{animation:pop .35s cubic-bezier(.2,.8,.2,1)}
+@keyframes pop{from{transform:scale(.4);opacity:0}to{transform:none;opacity:1}}
+.mdot{animation:pulse 1.8s ease-in-out infinite}
+@keyframes pulse{50%{transform:scale(1.25)}}
+}
+@media(prefers-reduced-motion:reduce){.bar{transition:none}}
+</style></head><body>
+<div id="demo">Showcase demo, runs entirely in this page. Logins: student@demo.test · warden@demo.test · admin@demo.test (any password). The code is shown on screen.</div>
+<canvas id="gl" aria-hidden="true"></canvas>
+<header><button type="button" id="menuBtn" class="ib" data-act="menu" aria-haspopup="dialog" aria-expanded="false" aria-controls="appmenu" aria-label="Menu"><span class="bars"></span><span>Menu</span><i class="mdot" id="mdot"></i></button><button type="button" class="logo" data-act="go" data-v="home">🏠 HostelCare</button><button type="button" id="themeBtn" class="ib" data-act="theme" aria-label="Switch to dark theme" title="Switch theme"><svg viewBox="0 0 24 24" aria-hidden="true" class="moon"><path d="M20 14.5A8.5 8.5 0 019.5 4 8.5 8.5 0 1020 14.5z"/></svg><svg viewBox="0 0 24 24" aria-hidden="true" class="sun"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M5 5l1.4 1.4M17.6 17.6L19 19M19 5l-1.4 1.4M6.4 17.6L5 19"/></svg></button></header>
+<main id="m"></main><div id="toast" role="status" aria-live="polite"></div>
+<div class="mscrim" id="mscrim" data-act="closemenu"></div>
+<aside class="amenu" id="appmenu" role="dialog" aria-modal="true" aria-label="App menu" inert>
+<div class="mh"><div class="mwho" id="mwho"></div><button type="button" class="ib" data-act="closemenu" aria-label="Close menu"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
+<div class="ms"><input id="mq" type="search" placeholder="Jump to…" aria-label="Search the menu" autocomplete="off" data-input="menuq"></div>
+<nav id="mlist" aria-label="Main"></nav>
+<div class="mf"><kbd>↑</kbd><kbd>↓</kbd> move <kbd>Enter</kbd> open <kbd>Esc</kbd> close <kbd>M</kbd> toggle</div>
+</aside>
+<div class="gd" id="guide" hidden>
+<div class="gd-b" data-act="gdclose"></div>
+<section class="gd-c" id="gdc" role="dialog" aria-modal="true" aria-labelledby="gdt" aria-describedby="gdd">
+<h2 id="gdt">Scroll down to explore</h2>
+<p class="mu" id="gdd">HostelCare tells its story as you scroll. Four short steps, then you can pick your hostel.</p>
+<ul class="gd-l">
+<li class="how mouse"><span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="7" y="2.5" width="10" height="17" rx="5"/><path class="wheel" d="M12 7v3"/><path d="M9 22h6"/></svg></span><div><b>Mouse or trackpad</b><small>Scroll down. The shape moves with you.</small></div></li>
+<li class="how touch"><span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="7" y="2.5" width="10" height="19" rx="2.5"/><path d="M11 18.5h2"/><path class="swipe" d="M12 15v-5M10 12l2-2 2 2"/></svg></span><div><b>Phone or tablet</b><small>Swipe up with one finger.</small></div></li>
+<li class="how kbd"><span class="ico keys"><kbd>Space</kbd><kbd>↓</kbd></span><div><b>Keyboard</b><small>Space, Page Down or the down arrow. Home goes back to the top.</small></div></li>
+</ul>
+<ol class="gd-s" aria-label="The four steps"><li>Register</li><li>Complain</li><li>Track</li><li>Resolve</li></ol>
+<label class="chk"><input type="checkbox" id="gdoff"> <span class="mu">Don’t show this again</span></label>
+<button type="button" class="p" id="gdgo" data-act="gdclose">Start scrolling</button>
+</section></div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script>(() => {
+'use strict';
+// Showcase only: replaces the server with an in-page fake so the real UI runs with no backend.
+// Email OTP via EmailJS. Fill the 3 values to send real emails; leave empty for demo mode (code shown on screen).
+// Template variables: {{to_email}} {{otp}} {{purpose}} {{minutes}}
+const MAIL = { service: '', template: '', key: '' }, MAILOK = () => !!(MAIL.service && MAIL.template && MAIL.key);
+let CODE = '123456', lastMail = 0;
+const newCode = () => MAILOK() ? String(100000 + Math.floor(Math.random() * 900000)) : '123456';
+const say = (m, ms) => (window.hcToast || console.log)(m, ms);
+const sendMail = (to, code, why) => {
+  if (!MAILOK() || !to) return;
+  if (Date.now() - lastMail < 3e4) { say('Wait a few seconds before requesting another code'); return; }
+  lastMail = Date.now();
+  fetch('https://api.emailjs.com/api/v1.0/email/send', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ service_id: MAIL.service, template_id: MAIL.template, user_id: MAIL.key, template_params: { to_email: to, otp: code, purpose: why, minutes: 5 } }) })
+    .then(r => { if (!r.ok) throw 0; say('Code sent to your email'); }).catch(() => say('Could not send the email. Try again.', 4500));
+};
+// Location: student must be within the hostel radius (default 10 m) with GPS accuracy of GACC metres or better.
+const hav = (a, b, c, d) => { const r = x => x * Math.PI / 180, k = r(c - a), l = r(d - b), q = Math.sin(k / 2) ** 2 + Math.cos(r(a)) * Math.cos(r(c)) * Math.sin(l / 2) ** 2; return 12742000 * Math.asin(Math.sqrt(q)); };
+const SEED = {"cats": [{"name": "Food & Mess", "defaultStaffRole": "Mess Manager", "subcategories": ["Food quality", "Food quantity", "Menu issue", "Hygiene", "Timing", "Missing meal", "Other"]}, {"name": "Laundry", "defaultStaffRole": "Laundry Manager", "subcategories": ["Clothes not returned", "Clothes damaged", "Clothes missing", "Laundry delay", "Poor washing quality", "Staff behaviour", "Other"]}, {"name": "Room & Maintenance", "defaultStaffRole": "Electrician", "subcategories": ["Electricity", "Fan", "AC/cooler", "Light", "Furniture", "Bed/mattress", "Door/lock", "Plumbing", "Bathroom", "Water supply", "Wi-Fi", "Cleanliness", "Pest/insect", "Other"]}, {"name": "Hostel Services", "defaultStaffRole": "Housekeeping Lead", "subcategories": ["Housekeeping", "Security", "Maintenance", "Internet", "Common area", "Water", "Electricity", "Other"]}, {"name": "Transport", "defaultStaffRole": "Transport Manager", "subcategories": ["Hostel bus", "Pickup/drop", "Timing", "Driver", "Route", "Vehicle", "Other"]}, {"name": "Staff / Management", "defaultStaffRole": "Warden Office", "subcategories": ["Staff behaviour", "Warden-related", "Security-related", "Service-related", "Other"]}, {"name": "Safety / Urgent", "defaultStaffRole": "Security Supervisor", "subcategories": ["Safety concern", "Security concern", "Medical emergency", "Urgent maintenance", "Other urgent"]}, {"name": "Gym", "defaultStaffRole": "Gym Trainer", "subcategories": ["Equipment broken", "Equipment missing", "Cleanliness", "Timings", "Trainer behaviour", "Overcrowding", "Safety", "Other"]}, {"name": "Security", "defaultStaffRole": "Security Head", "subcategories": ["Guard absent from post", "Rude or abusive behaviour", "Entry/exit register not maintained", "Unknown visitors allowed in", "CCTV or gate lights not working", "Unfair checking or entry refusal", "Harassment", "Other"]}, {"name": "Rules & Conduct", "defaultStaffRole": "Warden Office", "subcategories": ["Smoking or vaping", "Alcohol", "Suspected drugs", "Loud noise after hours", "Ragging or bullying", "Unauthorised guests", "Property damage", "Other"]}, {"name": "Others", "defaultStaffRole": "Warden Office", "subcategories": ["Suggestion", "Lost & found", "Not listed above", "Other"]}], "hostels": [{"name": "Royal Paradise", "area": "Knowledge Park III", "address": "FFCH+999, 33 Feet Road, Sanjay Colony, Sector 25, Knowledge Park III, Ruhallapur, Greater Noida, Uttar Pradesh 201310", "type": "Boys", "phone": null, "beds": null, "facilities": "To be confirmed by hostel", "lat": 28.47118, "lng": 77.47866}, {"name": "Hive Hostels Fortune", "area": "Knowledge Park III", "address": "Knowledge Park III, Greater Noida, Uttar Pradesh", "type": "Co-ed", "phone": null, "beds": 400, "facilities": "Single and double sharing, Food provided", "lat": 28.469, "lng": 77.49}, {"name": "Nalanda Living Boys Hostel", "area": "Knowledge Park III", "address": "Near GL Bajaj, Knowledge Park III, Greater Noida, Uttar Pradesh 201308", "type": "Boys", "phone": null, "beds": null, "facilities": "Student hostel with food", "lat": 28.469, "lng": 77.49}, {"name": "KCC Hostels", "area": "Knowledge Park III", "address": "Main road near Aqua Line metro and India Expo Centre, Knowledge Park III, Greater Noida", "type": "Boys", "phone": null, "beds": 600, "facilities": "Canteen, near Aqua Line metro", "lat": 28.469, "lng": 77.49}, {"name": "Stanza Living Chicago House", "area": "Knowledge Park III", "address": "Knowledge Park III, Greater Noida, Uttar Pradesh", "type": "Girls", "phone": null, "beds": null, "facilities": "Girls PG / co-living", "lat": 28.469, "lng": 77.49}]}, H = 3600e3, ago = h => new Date(Date.now() - h * H).toISOString();
+// ---- Study Hub seed: LINKS ONLY to official free sources. No files are stored or copied. ----
+const GEO_FREE = ['Safety / Urgent', 'Security', 'Rules & Conduct'];   // location check does not block these
+const SERIOUS = { 'Security': ['Harassment', 'Rude or abusive behaviour'], 'Rules & Conduct': ['Ragging or bullying', 'Suspected drugs'] };   // also notify the super admin
+const FLOORS = ['Ground floor', '1st floor', '2nd floor', '3rd floor', '4th floor', 'Terrace / roof', 'Outside / other'], WHENS = ['Morning', 'Afternoon', 'Evening', 'Night'];
+const LK = {
+  nptel: ['NPTEL', 'Course page', 'https://nptel.ac.in/courses'], nptelOn: ['NPTEL', 'Course page', 'https://onlinecourses.nptel.ac.in/'],
+  swayam: ['SWAYAM', 'Course page', 'https://swayam.gov.in/explorer'], ncert: ['NCERT', 'PDF', 'https://ncert.nic.in/textbook.php'],
+  epg: ['ePG Pathshala', 'Course page', 'https://epgp.inflibnet.ac.in/'], ocw: ['MIT OpenCourseWare', 'Course page', 'https://ocw.mit.edu/'],
+  ocwq: q => ['MIT OpenCourseWare', 'Course page', 'https://ocw.mit.edu/search/?q=' + encodeURIComponent(q)],
+  openstax: ['OpenStax', 'Course page', 'https://openstax.org/subjects/business'], khanEco: ['Khan Academy', 'Video', 'https://www.khanacademy.org/economics-finance-domain']
+};
+SEED.study = {
+  domains: [
+    { name: 'CSE', subjects: ['Data Structures & Algorithms', 'Operating Systems', 'Database Management', 'Computer Networks', 'Discrete Mathematics'] },
+    { name: 'ECE', subjects: ['Digital Electronics', 'Analog Circuits', 'Signals & Systems', 'Communication Systems', 'Microprocessors & Embedded'] },
+    { name: 'Mechanical', subjects: ['Thermodynamics', 'Fluid Mechanics', 'Strength of Materials', 'Machine Design', 'Manufacturing Processes'] },
+    { name: 'Civil', subjects: ['Structural Analysis', 'Geotechnical Engineering', 'Surveying', 'Transportation Engineering'] },
+    { name: 'Management', subjects: ['Marketing', 'Financial Accounting', 'Organisational Behaviour', 'Economics', 'Entrepreneurship'] },
+    { name: 'Competitive exams', subjects: ['JEE Main', 'NEET', 'UPSC Civil Services', 'GATE', 'CAT'] },
+    { name: 'Coding', subjects: ['Python', 'Web Development', 'Git & GitHub', 'Java', 'C Programming'] }],
+  items: [
+    ['CSE', 'Data Structures & Algorithms', 'Introduction to Algorithms (6.006, Spring 2020)', ['MIT OpenCourseWare', 'Course page', 'https://ocw.mit.edu/courses/6-006-introduction-to-algorithms-spring-2020/']],
+    ['CSE', 'Data Structures & Algorithms', 'CS50x: Introduction to Computer Science', ['Harvard CS50', 'Course page', 'https://cs50.harvard.edu/x/']],
+    ['CSE', 'Data Structures & Algorithms', 'NPTEL course catalogue: look up “Data Structures” or “Algorithms”', 'nptel'],
+    ['CSE', 'Operating Systems', 'Operating Systems: Three Easy Pieces (free book, by the authors)', ['OSTEP (Univ. of Wisconsin)', 'Course page', 'https://pages.cs.wisc.edu/~remzi/OSTEP/']],
+    ['CSE', 'Operating Systems', 'NPTEL course catalogue: look up “Operating Systems”', 'nptel'],
+    ['CSE', 'Database Management', 'PostgreSQL official tutorial (SQL basics)', ['PostgreSQL Docs', 'Course page', 'https://www.postgresql.org/docs/current/tutorial.html']],
+    ['CSE', 'Database Management', 'NPTEL course catalogue: look up “Database Management”', 'nptel'],
+    ['CSE', 'Database Management', 'SWAYAM course explorer: search “DBMS”', 'swayam'],
+    ['CSE', 'Computer Networks', 'NPTEL course catalogue: look up “Computer Networks”', 'nptel'],
+    ['CSE', 'Computer Networks', 'SWAYAM course explorer: search “Computer Networks”', 'swayam'],
+    ['CSE', 'Discrete Mathematics', 'Mathematics for Computer Science (6.042J, Fall 2010)', ['MIT OpenCourseWare', 'Course page', 'https://ocw.mit.edu/courses/6-042j-mathematics-for-computer-science-fall-2010/']],
+    ['CSE', 'Discrete Mathematics', 'NPTEL course catalogue: look up “Discrete Mathematics”', 'nptel'],
+    ['ECE', 'Digital Electronics', 'Computation Structures (6.004, Spring 2017)', ['MIT OpenCourseWare', 'Course page', 'https://ocw.mit.edu/courses/6-004-computation-structures-spring-2017/']],
+    ['ECE', 'Digital Electronics', 'NPTEL course catalogue: look up “Digital Circuits”', 'nptel'],
+    ['ECE', 'Analog Circuits', 'Circuits and Electronics (6.002, Spring 2007)', ['MIT OpenCourseWare', 'Course page', 'https://ocw.mit.edu/courses/6-002-circuits-and-electronics-spring-2007/']],
+    ['ECE', 'Analog Circuits', 'NPTEL course catalogue: look up “Analog Circuits”', 'nptel'],
+    ['ECE', 'Signals & Systems', 'Signals and Systems (6.003, Fall 2011)', ['MIT OpenCourseWare', 'Course page', 'https://ocw.mit.edu/courses/6-003-signals-and-systems-fall-2011/']],
+    ['ECE', 'Signals & Systems', 'NPTEL course catalogue: look up “Signals and Systems”', 'nptel'],
+    ['ECE', 'Communication Systems', 'NPTEL course catalogue: look up “Communication Systems”', 'nptel'],
+    ['ECE', 'Communication Systems', 'SWAYAM course explorer: search “Communication”', 'swayam'],
+    ['ECE', 'Microprocessors & Embedded', 'NPTEL course catalogue: look up “Microprocessors” or “Embedded Systems”', 'nptel'],
+    ['ECE', 'Microprocessors & Embedded', 'SWAYAM course explorer: search “Embedded Systems”', 'swayam'],
+    ['Mechanical', 'Thermodynamics', 'MIT OpenCourseWare: search “thermodynamics”', LK.ocwq('thermodynamics')],
+    ['Mechanical', 'Thermodynamics', 'NPTEL course catalogue: look up “Thermodynamics”', 'nptel'],
+    ['Mechanical', 'Fluid Mechanics', 'MIT OpenCourseWare: search “fluid mechanics”', LK.ocwq('fluid mechanics')],
+    ['Mechanical', 'Fluid Mechanics', 'NPTEL course catalogue: look up “Fluid Mechanics”', 'nptel'],
+    ['Mechanical', 'Strength of Materials', 'MIT OpenCourseWare: search “mechanics of materials”', LK.ocwq('mechanics of materials')],
+    ['Mechanical', 'Strength of Materials', 'NPTEL course catalogue: look up “Strength of Materials”', 'nptel'],
+    ['Mechanical', 'Machine Design', 'NPTEL course catalogue: look up “Machine Design”', 'nptel'],
+    ['Mechanical', 'Machine Design', 'SWAYAM course explorer: search “Machine Design”', 'swayam'],
+    ['Mechanical', 'Manufacturing Processes', 'NPTEL course catalogue: look up “Manufacturing Processes”', 'nptel'],
+    ['Mechanical', 'Manufacturing Processes', 'MIT OpenCourseWare: search “manufacturing”', LK.ocwq('manufacturing')],
+    ['Civil', 'Structural Analysis', 'NPTEL course catalogue: look up “Structural Analysis”', 'nptel'],
+    ['Civil', 'Structural Analysis', 'MIT OpenCourseWare: search “structural analysis”', LK.ocwq('structural analysis')],
+    ['Civil', 'Geotechnical Engineering', 'NPTEL course catalogue: look up “Soil Mechanics” or “Geotechnical”', 'nptel'],
+    ['Civil', 'Geotechnical Engineering', 'SWAYAM course explorer: search “Geotechnical”', 'swayam'],
+    ['Civil', 'Surveying', 'NPTEL course catalogue: look up “Surveying”', 'nptel'],
+    ['Civil', 'Surveying', 'SWAYAM course explorer: search “Surveying”', 'swayam'],
+    ['Civil', 'Transportation Engineering', 'NPTEL course catalogue: look up “Transportation Engineering”', 'nptel'],
+    ['Civil', 'Transportation Engineering', 'MIT OpenCourseWare: search “transportation”', LK.ocwq('transportation')],
+    ['Management', 'Marketing', 'OpenStax free business textbooks (Marketing and more)', 'openstax'],
+    ['Management', 'Marketing', 'NPTEL course catalogue: look up “Marketing Management”', 'nptel'],
+    ['Management', 'Financial Accounting', 'OpenStax free business textbooks (Accounting and more)', 'openstax'],
+    ['Management', 'Financial Accounting', 'ePG Pathshala: Commerce and Management courses', 'epg'],
+    ['Management', 'Organisational Behaviour', 'NPTEL course catalogue: look up “Organizational Behaviour”', 'nptel'],
+    ['Management', 'Organisational Behaviour', 'SWAYAM course explorer: search “Organisational Behaviour”', 'swayam'],
+    ['Management', 'Economics', 'Khan Academy: economics and finance', 'khanEco'],
+    ['Management', 'Economics', 'ePG Pathshala: Economics courses', 'epg'],
+    ['Management', 'Entrepreneurship', 'NPTEL course catalogue: look up “Entrepreneurship”', 'nptel'],
+    ['Management', 'Entrepreneurship', 'OpenStax free business textbooks (Entrepreneurship and more)', 'openstax'],
+    ['Competitive exams', 'JEE Main', 'NCERT textbooks (Class 11 and 12 Physics, Chemistry, Maths)', 'ncert'],
+    ['Competitive exams', 'JEE Main', 'National Testing Agency: official JEE Main site (syllabus, past papers)', ['National Testing Agency', 'Course page', 'https://jeemain.nta.nic.in/']],
+    ['Competitive exams', 'NEET', 'NCERT textbooks (Class 11 and 12 Biology, Physics, Chemistry)', 'ncert'],
+    ['Competitive exams', 'NEET', 'National Testing Agency: official NEET site (syllabus, past papers)', ['National Testing Agency', 'Course page', 'https://neet.nta.nic.in/']],
+    ['Competitive exams', 'UPSC Civil Services', 'UPSC official site (syllabus, previous papers)', ['UPSC', 'Course page', 'https://upsc.gov.in/']],
+    ['Competitive exams', 'UPSC Civil Services', 'NCERT textbooks (History, Geography, Polity, Economics)', 'ncert'],
+    ['Competitive exams', 'GATE', 'NPTEL course catalogue: core subject lectures for GATE', 'nptel'],
+    ['Competitive exams', 'GATE', 'MIT OpenCourseWare: course materials for core subjects', 'ocw'],
+    ['Competitive exams', 'CAT', 'Official CAT site by the IIMs (syllabus, mock information)', ['IIM CAT', 'Course page', 'https://iimcat.ac.in/']],
+    ['Competitive exams', 'CAT', 'NCERT Class 9 and 10 Maths (quantitative basics)', 'ncert'],
+    ['Coding', 'Python', 'The Python Tutorial (official docs)', ['Python.org', 'Course page', 'https://docs.python.org/3/tutorial/']],
+    ['Coding', 'Python', 'CS50P: Introduction to Programming with Python', ['Harvard CS50', 'Course page', 'https://cs50.harvard.edu/python/']],
+    ['Coding', 'Web Development', 'MDN: Learn web development', ['MDN Web Docs', 'Course page', 'https://developer.mozilla.org/en-US/docs/Learn_web_development']],
+    ['Coding', 'Web Development', 'freeCodeCamp: free curriculum', ['freeCodeCamp', 'Course page', 'https://www.freecodecamp.org/learn']],
+    ['Coding', 'Web Development', 'The Odin Project: free learning paths', ['The Odin Project', 'Course page', 'https://www.theodinproject.com/paths']],
+    ['Coding', 'Git & GitHub', 'Pro Git (free book)', ['git-scm.com', 'Course page', 'https://git-scm.com/book/en/v2']],
+    ['Coding', 'Java', 'Learn Java (official dev.java)', ['dev.java (Oracle)', 'Course page', 'https://dev.java/learn/']],
+    ['Coding', 'Java', 'NPTEL course catalogue: look up “Programming in Java”', 'nptel'],
+    ['Coding', 'C Programming', 'NPTEL course catalogue: look up “Programming in C”', 'nptel'],
+    ['Coding', 'C Programming', 'SWAYAM course explorer: search “C Programming”', 'swayam']]
+};
+let studySeq = 0;
+const study = SEED.study.items.map(([domain, subject, title, x]) => { const k = typeof x === 'string' ? LK[x] : x; return { id: ++studySeq, domain, subject, title, source: k[0], type: k[1], url: k[2], status: 'approved', by_id: null, by: null }; });
+const studyReported = new Set();
+const NEXT = { 'Submitted': ['Acknowledged', 'In Progress'], 'Acknowledged': ['In Progress', 'Resolved'], 'In Progress': ['Resolved'], 'Resolved': ['Closed', 'In Progress'], 'Closed': ['In Progress'] };
+const hostels = SEED.hostels.map((h, i) => ({ id: i + 1, ...h, geoRadiusM: 10, geoEnforced: true, active: true }));
+const hn = id => hostels.find(h => h.id === id)?.name || null;
+const users = [
+  { id: 1, role: 'student', hostel_id: 1, name: 'Mayank Tripathi', email: 'student@demo.test', mobile: '9000000001', room: '204' },
+  { id: 2, role: 'warden', hostel_id: 1, name: 'Mr. Verma', email: 'warden@demo.test', mobile: null, room: null },
+  { id: 3, role: 'super_admin', hostel_id: null, name: 'Platform Admin', email: 'admin@demo.test', mobile: null, room: null, },
+  { id: 4, role: 'student', hostel_id: 1, name: 'Mohit', email: 'mohit@demo.test', mobile: '9000000004', room: '112' },
+  { id: 5, role: 'student', hostel_id: 1, name: 'Mohd. Shaad', email: 'shaad@demo.test', mobile: '9000000005', room: '301' }];
+const prof = u => u && ({ ...u, hostel: hn(u.hostel_id) });
+const staff = [[1, 'Raju Singh', 'Electrician'], [2, 'Meena Devi', 'Housekeeping Lead'], [3, 'Suresh Kumar', 'Mess Manager']].map(([id, name, role]) => ({ id, name, role, phone: '98100 0000' + id, active: true, hostel_id: 1 }));
+const residents = [[1, 'RPH-1001', 'Mayank Tripathi', '9000000001', '204', 'registered'], [2, 'RPH-1002', 'Mohit', '9000000004', '112', 'registered'], [3, 'RPH-1003', 'Neha Gupta', '9000000010', '118', 'unused'], [4, 'RPH-1004', 'Dev Patel', '9000000011', '120', 'unused']].map(([id, code, name, mobile, room, status]) => ({ id, code, name, mobile, room, status, hostel_id: 1, hostel: 'Royal Paradise' }));
+const posts = [{ id: 1, hostel_id: 1, kind: 'Notice', pinned: 1, title: 'Welcome to HostelCare', body: 'Report problems here and track them until they are fixed. Announcements from your warden will appear on this page.', by: 'Mr. Verma', created_at: ago(2) }];
+const comps = [], notes = { 1: [], 2: [], 3: [] }, audit = [];
+let seq = 0, sess = null, pend = null, reg = null;
+const log = (a, e, id) => audit.unshift({ id: audit.length + 1, actor_id: sess?.id ?? null, action: a, entity: e, entity_id: String(id ?? ''), created_at: ago(0) });
+const note = (uid, body) => (notes[uid] ||= []).unshift({ id: Date.now() + Math.random(), body, read: false, created_at: ago(0) });
+const mk = (sid, title, cat, sub, status, priority, hrs, o = {}) => {
+  const s = users.find(u => u.id === sid), id = `HC-2026-${String(++seq).padStart(6, '0')}`;
+  const c = { id, title, description: o.d || title + '. Please look into this soon.', category: cat, subcategory: sub, status, priority, is_private: !!o.priv, room: s.room, location: o.loc || '', hostel: hn(1), hostel_id: 1, student_id: sid, student_name: s.name, created_at: ago(hrs), updated_at: ago(hrs / 2), assigned_staff_id: o.st || null, reopen_count: 0, floor: o.floor || null, when_part: o.when || null, when_text: '', involved: '', verified: o.verified || null, messages: [], history: [{ from_status: null, to_status: 'Submitted', note: null, created_at: ago(hrs) }], attachments: [], feedback: null };
+  if (o.msg) c.messages.push({ id: 1, body: o.msg, internal: false, created_at: ago(hrs / 2), author: 'Mr. Verma', role: 'warden' });
+  if (status !== 'Submitted') c.history.push({ from_status: 'Submitted', to_status: status, note: null, created_at: ago(hrs / 2) });
+  comps.push(c); return c;
+};
+mk(1, 'Fan making loud noise', 'Room & Maintenance', 'Fan', 'In Progress', 'High', 30, { st: 1, loc: 'Room 204', msg: 'Electrician Raju will visit today after 4 PM.' });
+mk(1, 'Dal quality poor at dinner', 'Food & Mess', 'Food quality', 'Resolved', 'Normal', 70, { st: 3, loc: 'Mess hall', msg: 'We changed the dal supplier and spoke to the cook.' });
+mk(1, 'Wi-Fi drops on 2nd floor', 'Room & Maintenance', 'Wi-Fi', 'Submitted', 'Normal', 3, { loc: '2nd floor' });
+mk(1, 'Laundry shirt not returned', 'Laundry', 'Clothes not returned', 'Closed', 'Normal', 200, { st: 2 }).feedback = { rating: 4, comment: 'Returned next day' };
+mk(4, 'Water cooler leaking', 'Hostel Services', 'Water', 'Acknowledged', 'High', 20, { loc: 'Ground floor' });
+mk(5, 'Main gate light not working', 'Safety / Urgent', 'Security concern', 'Submitted', 'Urgent', 2, { loc: 'Main gate' });
+mk(4, 'Warden office behaviour', 'Staff / Management', 'Warden-related', 'In Progress', 'Normal', 50, { priv: true, st: 2 });
+mk(5, 'Bus timing clash', 'Transport', 'Timing', 'Resolved', 'Normal', 90, { st: 2 });
+mk(4, 'Smoking in washroom', 'Rules & Conduct', 'Smoking or vaping', 'Submitted', 'Normal', 5, { priv: true, floor: '2nd floor', loc: 'Washroom', when: 'Night', d: 'Smell of smoke in the washroom late at night.' });
+mk(5, 'Loud music after midnight', 'Rules & Conduct', 'Loud noise after hours', 'In Progress', 'Normal', 40, { priv: true, floor: '3rd floor', loc: 'Corridor', when: 'Night', verified: 'not_verified', st: 2, d: 'Loud music in the corridor after midnight.' });
+mk(5, 'Smoking behind the block', 'Rules & Conduct', 'Smoking or vaping', 'Closed', 'Normal', 120, { priv: true, floor: 'Outside / other', loc: 'Back of the hostel', when: 'Evening', verified: 'not_verified', d: 'People smoking behind the block.' });
+
+const scope = () => !sess ? [] : sess.role === 'student' ? comps.filter(c => c.student_id === sess.id) : sess.role === 'warden' ? comps.filter(c => c.hostel_id === sess.hostel_id) : comps;
+const filt = (a, q) => a.filter(c => (!q.status || c.status === q.status) && (!q.category || c.category === q.category) && (!q.priority || c.priority === q.priority) && (!q.hostelId || c.hostel_id === +q.hostelId) && (!q.q || c.id.toLowerCase().startsWith(q.q.toLowerCase())));
+const row = c => ({ id: c.id, title: c.title, status: c.status, priority: c.priority, is_private: c.is_private, room: c.is_private && sess.role !== 'student' ? null : c.room, created_at: c.created_at, updated_at: c.updated_at, category: c.category, hostel: c.hostel, student_name: c.is_private && sess.role !== 'student' ? null : c.student_name });
+const E = (s, m) => { throw Object.assign(new Error(m), { s }); };
+const own = id => { const c = comps.find(x => x.id === id); if (!c || (sess.role === 'student' && c.student_id !== sess.id) || (sess.role === 'warden' && c.hostel_id !== sess.hostel_id)) E(404, 'Not found'); return c; };
+const adm = () => sess && sess.role !== 'student';
+const push = (c, to, n) => { c.history.push({ from_status: c.status, to_status: to, note: n || null, created_at: ago(0) }); c.status = to; c.updated_at = ago(0); };
+
+function route(m, p, q, b) {
+  const R = (re) => { const x = p.match(re); return x && x.slice(1).map(decodeURIComponent); };
+  let x;
+  if (m === 'GET' && p === '/api/me') return sess ? { user: prof(sess) } : E(401, 'Not signed in');
+  if (m === 'GET' && p === '/api/hostels') return hostels.map(({ id, name, area, address, type, phone, beds, facilities }) => ({ id, name, area, address, type, phone, beds, facilities }));
+  if (m === 'GET' && p === '/api/categories') return SEED.cats;
+  if (p === '/api/posts') {
+    if (!sess) E(401, 'Not signed in');
+    if (m === 'GET') return posts.filter(x => sess.role === 'super_admin' || !x.hostel_id || x.hostel_id === sess.hostel_id).sort((a, b) => b.pinned - a.pinned || b.id - a.id);
+    if (m === 'POST') {
+      if (!adm()) E(403, 'Only wardens can post announcements');
+      const t = String(b.title || '').trim().slice(0, 100), body = String(b.body || '').trim().slice(0, 1000);
+      if (t.length < 3 || body.length < 3) E(400, 'Add a title and a message');
+      const hid = sess.role === 'super_admin' ? Number(b.hostel_id || 0) : sess.hostel_id, kind = ['Notice', 'Mess', 'Maintenance', 'Event', 'Emergency'].includes(b.kind) ? b.kind : 'Notice';
+      const n = { id: Math.max(0, ...posts.map(y => y.id)) + 1, hostel_id: hid, kind, pinned: b.pinned ? 1 : 0, title: t, body, by: sess.name, created_at: ago(0) };
+      posts.push(n); users.filter(u => u.role === 'student' && (!hid || u.hostel_id === hid)).forEach(u => note(u.id, (kind === 'Emergency' ? '🚨 ' : '📢 ') + t)); log('post', 'post', n.id); return n;
+    }
+  }
+  if ((x = R(/^\/api\/posts\/(\d+)$/))) {
+    const po = posts.find(y => y.id === +x[0]); if (!po) E(404, 'Announcement not found');
+    if (!adm() || (sess.role !== 'super_admin' && po.hostel_id !== sess.hostel_id)) E(403, 'You can only change your own hostel’s announcements');
+    if (m === 'PATCH') { po.pinned = po.pinned ? 0 : 1; return po; }
+    if (m === 'DELETE') { posts.splice(posts.indexOf(po), 1); return { ok: true }; }
+  }
+  if (m === 'POST' && p === '/api/auth/login') {
+    const id = String(b.identifier).trim().toLowerCase(), u = users.find(u => u.email === id || (u.mobile && u.mobile === id.replace(/\D/g, '').slice(-10)));
+    if (!u) E(401, 'Invalid credentials. Demo logins: student@demo.test, warden@demo.test, admin@demo.test (any password)');
+    pend = u; CODE = newCode(); sendMail(u.email, CODE, 'Log in to HostelCare'); return { challengeId: 'demo', emailHint: u.email[0] + '***@' + u.email.split('@')[1], devCode: MAILOK() ? undefined : CODE };
+  }
+  if (m === 'POST' && p === '/api/auth/login/verify') { if (b.code !== CODE || !pend) E(400, 'Wrong code'); sess = pend; log('login', 'user', sess.id); return { user: prof(sess), csrf: 'demo' }; }
+  if (m === 'POST' && p === '/api/auth/register/start') { reg = b; CODE = newCode(); sendMail(b.email, CODE, 'Verify your HostelCare account'); return { challengeId: 'reg', devCode: MAILOK() ? undefined : CODE }; }
+  if (m === 'POST' && p === '/api/auth/register/verify') { if (b.code !== CODE || !reg) E(400, 'Wrong code'); users.push({ id: 100 + users.length, role: 'student', hostel_id: reg.hostelId, name: reg.name, email: reg.email.toLowerCase(), mobile: reg.mobile.slice(-10), room: reg.room || '' }); return { ok: true }; }
+  if (m === 'POST' && p === '/api/auth/password/forgot') { CODE = newCode(); sendMail(users.find(u => u.email === String(b.identifier || '').trim().toLowerCase())?.email, CODE, 'Reset your HostelCare password'); return { challengeId: 'p', devCode: MAILOK() ? undefined : CODE, message: 'If the account exists, a code has been emailed.' }; }
+  if (m === 'POST' && (p === '/api/auth/password/reset' || p === '/api/auth/password/change')) return { ok: true };
+  if (m === 'POST' && p === '/api/auth/logout') { sess = null; return { ok: true }; }
+  if (!sess) E(401, 'Not signed in');
+  if (p === '/api/notifications') return m === 'GET' ? (notes[sess.id] ||= []) : 0;
+  if (p === '/api/notifications/read') { (notes[sess.id] ||= []).forEach(n => n.read = true); return { ok: true }; }
+  if (p === '/api/study' && m === 'GET') { if (sess.role !== 'student') E(403, 'The Study Hub is for students'); return { domains: SEED.study.domains, items: study.filter(x => x.status === 'approved').map(({ id, domain, subject, title, source, type, url }) => ({ id, domain, subject, title, source, type, url })) }; }
+  if (p === '/api/study/suggest' && m === 'POST') {
+    if (sess.role !== 'student') E(403, 'Only students can suggest resources');
+    const T = String(b.title || '').trim().slice(0, 120), S = String(b.source || '').trim().slice(0, 60); let u;
+    try { u = new URL(String(b.url || '').trim()); } catch { E(400, 'Enter a valid link starting with https://'); }
+    if (!/^https?:$/.test(u.protocol)) E(400, 'Enter a valid link starting with https://');
+    const dom = SEED.study.domains.find(d => d.name === b.domain); if (!dom || !dom.subjects.includes(b.subject)) E(400, 'Choose a subject');
+    if (T.length < 3 || S.length < 2) E(400, 'Add a title and the source name');
+    if (b.own !== true) E(400, 'Please confirm this is your own work or freely licensed');
+    if (study.some(x => x.status !== 'rejected' && x.url === u.href)) E(409, 'That link is already listed or waiting for review');
+    if (study.filter(x => x.status === 'pending' && x.by_id === sess.id).length >= 5) E(429, 'You already have 5 suggestions waiting. Please wait for a review.');
+    const it = { id: ++studySeq, domain: dom.name, subject: b.subject, title: T, source: S, type: ['PDF', 'Video', 'Course page'].includes(b.type) ? b.type : 'Course page', url: u.href, status: 'pending', by_id: sess.id, by: sess.name };
+    study.push(it); note(2, `Study suggestion waiting for review: "${T}" (Study resources page)`); return { id: it.id };
+  }
+  if (p === '/api/study/report' && m === 'POST') {
+    if (sess.role !== 'student') E(403, 'Only students can report links');
+    const it = study.find(x => x.id === Number(b.id) && x.status === 'approved'); if (!it) E(404, 'Resource not found');
+    const key = sess.id + ':' + it.id; if (!studyReported.has(key)) { studyReported.add(key); note(2, `Broken link reported: "${it.title}" (${it.source}), ${it.domain} › ${it.subject}`); }
+    return { ok: true };
+  }
+  if (p === '/api/emergency') return [{ label: 'Ambulance', value: '108' }, { label: 'Police', value: '100' }, { label: 'Women helpline', value: '1091' }, { label: 'Hostel office', value: '0120 000 0000' }];
+  if (m === 'GET' && p === '/api/complaints') return filt(scope(), q).sort((a, b) => b.created_at.localeCompare(a.created_at)).slice(+q.offset || 0, (+q.offset || 0) + (+q.limit || 25)).map(row);
+  if (m === 'POST' && p === '/api/complaints') {
+    const cat = SEED.cats.find(x => x.name === b.category);
+    if (!cat || !cat.subcategories.includes(b.subcategory)) E(400, 'Choose a valid category and subcategory');
+    const free = GEO_FREE.includes(cat.name), conduct = cat.name === 'Rules & Conduct';
+    let dist = null; const hh = hostels.find(h => h.id === sess.hostel_id);
+    // Radius check applies to every category EXCEPT Safety / Urgent, Security and Rules & Conduct.
+    if (hh && hh.geoEnforced && !free) { const g = b.geo; if (!g || hh.lat == null) E(403, 'Hostel location is not set. Ask your warden or admin to set it.'); const d = hav(g.lat, g.lng, hh.lat, hh.lng); if (d > (hh.geoRadiusM || 10)) E(403, `You are ${Math.round(d)} m from your hostel. You must be within ${hh.geoRadiusM || 10} m.`); dist = Math.round(d); }
+    if (conduct && (!FLOORS.includes(b.floor) || !WHENS.includes(b.when) || !String(b.location || '').trim())) E(400, 'Say where and when it happened');
+    const c = mk(sess.id, b.title, cat.name, b.subcategory, 'Submitted', b.priority, 0, { d: b.description, loc: b.location, priv: conduct ? true : !!b.isPrivate, floor: conduct ? b.floor : null, when: conduct ? b.when : null });
+    c.room = conduct ? '' : b.room; c.created_at = c.updated_at = ago(0); c.history[0].created_at = ago(0);
+    if (conduct) { c.when_text = String(b.whenText || '').trim().slice(0, 80); c.involved = String(b.involved || '').trim().slice(0, 80); }
+    note(2, `New ${b.priority} complaint ${c.id}: ${b.title}`);
+    if ((SERIOUS[cat.name] || []).includes(b.subcategory)) note(3, `Serious report ${c.id}: ${cat.name} › ${b.subcategory}`);
+    return { id: c.id, geoDistanceM: dist };
+  }
+  if ((x = R(/^\/api\/complaints\/([^/]+)$/))) {
+    const c = own(x[0]);
+    if (m === 'GET') { const hide = adm() && c.is_private; const out = { ...c, student_name: hide ? null : c.student_name, room: hide ? null : c.room, student_id: hide ? undefined : c.student_id, staff_name: staff.find(s => s.id === c.assigned_staff_id)?.name || null, messages: c.messages.filter(z => adm() || !z.internal).map(z => hide && z.role === 'student' ? { ...z, author: 'Student (confidential)' } : z) }; if (!adm()) delete out.verified; return out; }
+    if (m === 'PATCH') {
+      if (!adm()) E(403, 'Forbidden');
+      if (b.status) { if (!NEXT[c.status].includes(b.status)) E(409, `Cannot move from ${c.status} to ${b.status}`); if (['Resolved', 'Closed'].includes(c.status) && b.status === 'In Progress') c.reopen_count++; push(c, b.status, b.note); note(c.student_id, `${c.id}: status is now ${b.status}`); }
+      if (b.verified !== undefined) { if (!['', 'verified', 'not_verified'].includes(b.verified) || !['Rules & Conduct', 'Security'].includes(c.category)) E(400, 'Invalid verification value'); c.verified = b.verified || null; }
+      if (b.priority) c.priority = b.priority; if (b.assignedStaffId !== undefined) c.assigned_staff_id = b.assignedStaffId; c.updated_at = ago(0); log('complaint.update', 'complaint', c.id); return { ok: true };
+    }
+  }
+  if ((x = R(/^\/api\/complaints\/([^/]+)\/messages$/))) { const c = own(x[0]); c.messages.push({ id: c.messages.length + 1, body: b.body, internal: !!b.internal, created_at: ago(0), author: sess.name, role: sess.role }); if (!b.internal) note(adm() ? c.student_id : 2, `${c.id}: ${adm() ? 'new reply from the warden' : 'student replied'}`); return { ok: true }; }
+  if ((x = R(/^\/api\/complaints\/([^/]+)\/resolution$/))) { const c = own(x[0]); if (c.status !== 'Resolved') E(409, 'Complaint is not awaiting confirmation'); if (b.resolved) { push(c, 'Closed'); if (b.rating) c.feedback = { rating: b.rating, comment: b.comment || null }; } else { c.reopen_count++; push(c, 'In Progress', 'Student: not resolved'); note(2, `${c.id} was REOPENED by the student`); } return { ok: true }; }
+  if (/^\/api\/complaints\/[^/]+\/attachments$/.test(p)) return { ok: true };
+  if (!adm()) E(403, 'Forbidden');
+  if (p === '/api/admin/study' && m === 'GET') return { domains: SEED.study.domains, items: study.filter(x => x.status !== 'rejected').map(({ id, domain, subject, title, source, type, url, status, by }) => ({ id, domain, subject, title, source, type, url, status, by })) };
+  if (p === '/api/admin/study' && m === 'POST') {
+    const T = String(b.title || '').trim().slice(0, 120), S = String(b.source || '').trim().slice(0, 60); let u;
+    try { u = new URL(String(b.url || '').trim()); } catch { E(400, 'Enter a valid link starting with https://'); }
+    if (!/^https?:$/.test(u.protocol)) E(400, 'Enter a valid link starting with https://');
+    const dom = SEED.study.domains.find(d => d.name === b.domain); if (!dom || !dom.subjects.includes(b.subject)) E(400, 'Choose a subject');
+    if (T.length < 3 || S.length < 2) E(400, 'Add a title and the source name');
+    const it = { id: ++studySeq, domain: dom.name, subject: b.subject, title: T, source: S, type: ['PDF', 'Video', 'Course page'].includes(b.type) ? b.type : 'Course page', url: u.href, status: 'approved', by_id: null, by: sess.name };
+    study.push(it); log('study.add', 'study', it.id); return { id: it.id };
+  }
+  if ((x = R(/^\/api\/admin\/study\/(\d+)$/))) {
+    const it = study.find(y => y.id === +x[0] && y.status !== 'rejected'); if (!it) E(404, 'Resource not found');
+    if (m === 'PATCH') {
+      if (it.status !== 'pending' || !['approved', 'rejected'].includes(b.status)) E(409, 'Only pending suggestions can be approved or rejected');
+      it.status = b.status; if (it.by_id) note(it.by_id, `Your study suggestion "${it.title}" was ${b.status === 'approved' ? 'approved and is now listed' : 'not approved'}`); log('study.' + b.status, 'study', it.id); return { ok: true };
+    }
+    if (m === 'DELETE') { study.splice(study.indexOf(it), 1); log('study.remove', 'study', it.id); return { ok: true }; }
+  }
+  if (p === '/api/admin/stats') {
+    const a = filt(scope(), q), n = f => a.filter(f).length, by = k => Object.entries(a.reduce((o, c) => (o[c[k]] = (o[c[k]] || 0) + 1, o), {})).map(([name, n]) => ({ [k === 'category' ? 'category' : 'hostel']: name, n })).sort((x, y) => y.n - x.n), r = a.filter(c => c.feedback);
+    const days = {}; a.forEach(c => { const d = c.created_at.slice(0, 10); days[d] = (days[d] || 0) + 1; });
+    const cc = filt(scope(), { hostelId: q.hostelId }).filter(c => c.category === 'Rules & Conduct');
+    const tally = (arr, key, order) => { const o = {}; arr.forEach(c => { const k = key(c); if (k) o[k] = (o[k] || 0) + 1; }); return order ? order.map(k => ({ k, n: o[k] || 0 })) : Object.entries(o).map(([k, n]) => ({ k, n })).sort((x, y) => y.n - x.n).slice(0, 5); };
+    const hotspots = { total: cc.length, byFloor: tally(cc, c => c.floor, FLOORS).filter(x => x.n), byTime: tally(cc, c => c.when_part, WHENS), bySpot: tally(cc, c => String(c.location || '').trim().toLowerCase()) };
+    const un = {}; comps.filter(c => c.verified === 'not_verified' && (!q.hostelId || c.hostel_id === +q.hostelId)).forEach(c => { un[c.student_id] = (un[c.student_id] || 0) + 1; });
+    const unverifiedReporters = sess.role === 'super_admin' ? Object.entries(un).map(([id, n]) => ({ name: users.find(u => u.id === +id)?.name || 'Unknown', n })).sort((x, y) => y.n - x.n) : undefined;
+    return { hotspots, unverifiedReporters, total: a.length, submitted: n(c => c.status === 'Submitted'), in_progress: n(c => ['Acknowledged', 'In Progress'].includes(c.status)), resolved: n(c => ['Resolved', 'Closed'].includes(c.status)), urgent_open: n(c => c.priority === 'Urgent' && !['Resolved', 'Closed'].includes(c.status)), reopened: 0, avg_resolution_h: 18.5, avg_rating: r.length ? r.reduce((s, c) => s + c.feedback.rating, 0) / r.length : null, students: users.filter(u => u.role === 'student').length, byCategory: by('category'), byHostel: by('hostel'), perDay: Object.entries(days).sort().map(([day, n]) => ({ day, n })), staffWorkload: [], frequentIssues: a.slice(0, 3).map(c => ({ subcategory: c.subcategory, category: c.category, n: 1 })) };
+  }
+  if (p === '/api/admin/staff') { if (m === 'POST') { staff.push({ id: staff.length + 1, name: b.name, role: b.role, phone: b.phone || '', active: true, hostel_id: b.hostelId || sess.hostel_id || 1 }); return { id: staff.length }; } return staff; }
+  if ((x = R(/^\/api\/admin\/staff\/(\d+)$/))) { Object.assign(staff.find(s => s.id === +x[0]), b); return { ok: true }; }
+  if (p === '/api/admin/residents') { if (m === 'POST') { residents.push({ id: residents.length + 1, code: b.code.toUpperCase(), name: b.name || '', mobile: b.mobile, room: b.room || '', status: 'unused', hostel_id: 1, hostel: 'Royal Paradise' }); return { id: residents.length }; } return residents; }
+  if (p === '/api/admin/residents/bulk') { b.rows.forEach(r => residents.push({ id: residents.length + 1, ...r, code: r.code.toUpperCase(), status: 'unused', hostel_id: 1, hostel: 'Royal Paradise' })); return { added: b.rows.length, skipped: 0 }; }
+  if ((x = R(/^\/api\/admin\/residents\/(\d+)\/deactivate$/))) { residents.find(r => r.id === +x[0]).status = 'deactivated'; return { ok: true }; }
+  if (p === '/api/admin/audit') return audit.length ? audit : [{ id: 0, actor_id: 2, action: 'login', entity: 'user', entity_id: '2', created_at: ago(1) }];
+  if (sess.role !== 'super_admin') E(403, 'Forbidden');
+  if (p === '/api/admin/hostels') { if (m === 'POST') { hostels.push({ id: hostels.length + 1, area: '', address: '', phone: null, beds: null, facilities: '', geoRadiusM: 10, geoEnforced: true, active: true, ...b }); return { id: hostels.length }; } return hostels; }
+  if ((x = R(/^\/api\/admin\/hostels\/(\d+)$/))) { Object.assign(hostels.find(h => h.id === +x[0]), b); return { ok: true }; }
+  if (p === '/api/admin/wardens') { if (m === 'POST') { users.push({ id: 200 + users.length, role: 'warden', hostel_id: b.hostelId, name: b.name, email: b.email, mobile: null, room: null }); return { id: 1 }; } return users.filter(u => u.role === 'warden').map(u => ({ id: u.id, name: u.name, email: u.email, active: u.active !== false, hostel_id: u.hostel_id, hostel: hn(u.hostel_id) })); }
+  if ((x = R(/^\/api\/admin\/wardens\/(\d+)\/deactivate$/))) { users.find(u => u.id === +x[0]).active = false; return { ok: true }; }
+  return E(404, 'Not found');
+}
+window.fetch = async (url, o = {}) => {
+  const u = new URL(url, location.href), q = Object.fromEntries(u.searchParams);
+  let b; try { b = typeof o.body === 'string' ? JSON.parse(o.body) : {}; } catch { b = {}; }
+  await new Promise(r => setTimeout(r, 120));   // feel like a network
+  const send = (s, d) => new Response(JSON.stringify(d), { status: s, headers: { 'content-type': 'application/json' } });
+  try { return send(200, route((o.method || 'GET').toUpperCase(), u.pathname, q, b)); } catch (e) { return send(e.s || 500, { error: e.message }); }
+};
+})();
+</script>
+<script>(() => {
+'use strict';
+const LP={on:0,cur:0,init:0},cl=(x,a,b)=>Math.min(b,Math.max(a,x)),sm=(a,b,x)=>{x=cl((x-a)/(b-a),0,1);return x*x*(3-2*x)};
+const reduceM=matchMedia("(prefers-reduced-motion:reduce)").matches,mob=()=>innerWidth<768;
+class Col{constructor(r,g,b){this.r=r;this.g=g;this.b=b}clone(){return new Col(this.r,this.g,this.b)}lerp(o,t){this.r+=(o.r-this.r)*t;this.g+=(o.g-this.g)*t;this.b+=(o.b-this.b)*t;return this}copy(o){this.r=o.r;this.g=o.g;this.b=o.b;return this}getHexString(){return[this.r,this.g,this.b].map(v=>Math.round(cl(v,0,1)*255).toString(16).padStart(2,"0")).join("")}}
+const K=h=>new Col(parseInt(h.slice(1,3),16)/255,parseInt(h.slice(3,5),16)/255,parseInt(h.slice(5,7),16)/255),OB=K("#0A0A0C"),LIME=K("#CCFF00"),VIO=K("#7C3AED"),TER=K("#E25822"),BRO=K("#2b140a"),PEA=K("#F4F4F6"),WH=K("#ffffff"),SUN=K("#ff8a3d");
+const ramp=(k,p)=>{for(let i=1;i<k.length;i++)if(p<=k[i][0])return k[i-1][1].clone().lerp(k[i][1],sm(k[i-1][0],k[i][0],p));return k[k.length-1][1].clone()};
+const EMB=K("#8A2F10"),NIT=K("#1A0B2E"),DEEP=K("#5B21B6"),CRM=K("#F7E8D8"),PCH=K("#FFD8BC"),LAV=K("#EDE9FE"),lin=v=>v<=.04045?v/12.92:Math.pow((v+.055)/1.055,2.4),lum=c=>.2126*lin(c.r)+.7152*lin(c.g)+.0722*lin(c.b);
+const BGL=[[0,PEA],[.2,PEA],[.5,CRM],[.66,PCH],[.92,LAV]],BGK=[[0,OB],[.2,OB],[.5,BRO],[.66,EMB],[.92,NIT]],FGK=[[0,WH],[.6,WH],[.68,OB]],ACK=[[0,LIME],[.6,LIME],[.7,OB],[.93,VIO]],LTK=[[0,VIO],[.55,VIO],[.7,SUN],[.9,SUN],[1,WH]],BGP=[[0,OB],[.2,OB],[.5,BRO],[.68,TER],[.92,PEA]];
+let R,sc3,cam,mesh,U,mx=0,my=0,tx=0,ty=0,last=0;
+function lpInit(){LP.init=1;try{R=new THREE.WebGLRenderer({canvas:document.getElementById("gl"),alpha:true,antialias:!mob()})}catch(e){R=null;return}
+const m=mob()?1:0;R.setPixelRatio(Math.min(devicePixelRatio,[2,1.25][m]));sc3=new THREE.Scene();cam=new THREE.PerspectiveCamera(38,1,.1,60);
+const g=new THREE.TorusKnotGeometry(1.1,.38,[200,100][m],[14,8][m],2,3).toNonIndexed(),pos=g.attributes.position,n=pos.count,tris=n/3,k=Math.ceil(tris/[14,7][m]),cen=new Float32Array(n*3),rnd=new Float32Array(n);
+for(let s=0;s*k<tris;s++){const a=s*k*3,b=Math.min(n,a+k*3);let x=0,y=0,z=0;for(let i=a;i<b;i++){x+=pos.getX(i);y+=pos.getY(i);z+=pos.getZ(i)}const c=b-a,r=Math.random();for(let i=a;i<b;i++){cen.set([x/c,y/c,z/c],i*3);rnd[i]=r}}
+g.setAttribute("aCenter",new THREE.BufferAttribute(cen,3));g.setAttribute("aRand",new THREE.BufferAttribute(rnd,1));
+U={uExplode:{value:0},uChrome:{value:0},uTime:{value:0},uBreath:{value:1},uLight:{value:VIO.clone()},uAcc:{value:LIME.clone()}};
+mesh=new THREE.Mesh(g,new THREE.ShaderMaterial({uniforms:U,vertexShader:`attribute vec3 aCenter;attribute float aRand;uniform float uExplode,uTime,uBreath;varying vec3 vN,vV;
+mat3 rot(vec3 a,float t){a=normalize(a);float s=sin(t),c=cos(t),o=1.-c;return mat3(o*a.x*a.x+c,o*a.x*a.y+a.z*s,o*a.z*a.x-a.y*s,o*a.x*a.y-a.z*s,o*a.y*a.y+c,o*a.y*a.z+a.x*s,o*a.z*a.x+a.y*s,o*a.y*a.z-a.x*s,o*a.z*a.z+c);}
+void main(){mat3 Rm=rot(vec3(aRand-.5,.3+aRand,1.-aRand),uExplode*(aRand*7.-3.5));vec3 loc=position-aCenter,dir=normalize(aCenter+vec3(.001));
+vec3 p=aCenter+dir*uExplode*(1.3+aRand*2.4)+Rm*loc*(1.-.2*uExplode);p*=1.+.035*uBreath*sin(uTime*1.3+aCenter.x*1.7+aCenter.y);
+vN=normalMatrix*(Rm*normal);vec4 mv=modelViewMatrix*vec4(p,1.);vV=-mv.xyz;gl_Position=projectionMatrix*mv;}`,
+fragmentShader:`precision highp float;uniform vec3 uLight,uAcc;uniform float uChrome,uTime;varying vec3 vN,vV;
+void main(){vec3 n=normalize(vN),v=normalize(vV),r=reflect(-v,n),L=normalize(vec3(.5,.8,.6));float f=pow(1.-max(dot(n,v),0.),3.),d=max(dot(n,L),0.);
+vec3 matte=vec3(.025)+uLight*(.2*d+.9*f)+uAcc*pow(f,2.)*.45*(1.-uChrome);
+float band=smoothstep(.45,.5,fract((r.y*.5+.5)*3.+r.x*.6+uTime*.03));vec3 env=mix(vec3(.04,.04,.06),vec3(.96),band*.9)+uLight*pow(max(dot(r,L),0.),12.)*1.6;
+env=mix(env,uLight*1.2,f*.5);env=mix(env,.5+.5*cos(6.283*(f*1.2+vec3(0.,.33,.67)+uChrome)),.22*f);gl_FragColor=vec4(mix(matte,env,uChrome),1.);}`}));sc3.add(mesh);
+const size=()=>{R.setSize(innerWidth,innerHeight,false);cam.aspect=innerWidth/innerHeight;cam.updateProjectionMatrix()};size();addEventListener("resize",size);
+addEventListener("pointermove",e=>{tx=e.clientX/innerWidth-.5;ty=e.clientY/innerHeight-.5})}
+function lp(on){const wasOn=LP.on;LP.on=on;document.body.classList.toggle("lp",on);const gl=document.getElementById("gl");gl.style.display=typeof THREE!=="undefined"?"block":"none";gl.style.opacity=on?1:.2;
+if(!wasOn){LP.cur=0;LP.t0=performance.now()}if(!LP.init){if(typeof THREE!=="undefined")lpInit();else LP.init=1}if(!LP.loop){LP.loop=1;requestAnimationFrame(lpFrame)}
+LP.h1=document.getElementById("lh1");LP.h2=document.getElementById("lh2");LP.lh=document.getElementById("lh");LP.sc=document.getElementById("lscrim");LP.cta=document.getElementById("lcta");
+LP.cos=[...document.querySelectorAll(".lc")].map(e=>({e,w:e.dataset.w.split(",").map(Number)}))}
+function lpFrame(t){requestAnimationFrame(lpFrame);if(document.hidden)return;if(!LP.on){if(R&&LP.init&&t-(LP.off||0)>50){LP.off=t;U.uExplode.value=0;U.uChrome.value=0;U.uTime.value=t/1000;U.uLight.value.copy(VIO);cam.position.set(0,0,mob()?12:9);cam.lookAt(0,0,0);mesh.rotation.y=t/4000;mesh.rotation.x=.3;R.render(sc3,cam)}return}if(!LP.h1)return;const dt=Math.min((t-last)/1000,.05);last=t;
+const max=Math.max(1,document.documentElement.scrollHeight-innerHeight),tgt=cl(scrollY/max,0,1);LP.cur+=(tgt-LP.cur)*(reduceM?1:1-Math.exp(-5.5*dt));const p=LP.cur;
+const bg=ramp(BGP,p),kk=sm(.14,.26,lum(bg)),fg=WH.clone().lerp(OB,kk),ac=LIME.clone().lerp(DEEP,kk),hx=c=>"#"+c.getHexString(),rs=document.documentElement.style;rs.setProperty("--lbg",hx(bg));rs.setProperty("--lfg",hx(fg));rs.setProperty("--lac",hx(ac));
+const it=reduceM?0:Math.pow(1-cl((t-LP.t0)/2600,0,1),3),hs=sm(.02,.24,p)*innerWidth*.6,sp=hs+it*innerWidth*.5;LP.h1.style.transform=`translateX(${-sp}px)`;LP.h2.style.transform=`translateX(${sp}px)`;LP.lh.style.opacity=(1-sm(.05,.22,p))*(1-it*.85);
+let s=0;for(const c of LP.cos){const o=sm(c.w[0],c.w[0]+.03,p)*(1-sm(c.w[1]-.03,c.w[1],p));c.e.style.opacity=o;c.e.style.transform=`translateY(${(1-o)*14}px)`;s=Math.max(s,o)}
+LP.sc.style.opacity=s*.9;const ci=sm(.93,.98,p);LP.cta.style.opacity=ci;LP.cta.style.transform=`translateY(${(1-ci)*20}px)`;LP.cta.style.pointerEvents=ci>.5?"auto":"none";
+if(!R)return;mx+=(tx-mx)*.05;my+=(ty-my)*.05;const ex=Math.max(sm(.22,.46,p)*(1-sm(.88,.94,p)),it);U.uExplode.value=ex;U.uChrome.value=sm(.58,.88,p);U.uTime.value=t/1000;U.uLight.value.copy(ramp(LTK,p));U.uAcc.value.copy(ac);
+const a=p*Math.PI*1.1,rad=(mob()?10.5:7.6)+ex*3.2;cam.position.set(Math.sin(a)*rad*.32,Math.sin(p*5)*.7,Math.cos(a*.35)*rad);cam.lookAt(0,0,0);
+mesh.rotation.y=(reduceM?0:t/1000*.16)+p*5;mesh.rotation.x=my*.5+.2;mesh.rotation.z=mx*.3;R.render(sc3,cam)}
+window.lp = lp;
+})();
+</script>
+<script>(() => {
+'use strict';
+// HostelCare front-end. Talks to the same-origin API (cookie session + x-csrf header).
+// No inline scripts or inline event handlers: all clicks/forms go through data-act / data-submit below.
+
+const $ = id => document.getElementById(id);
+const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+const fd = t => t ? new Date(t).toLocaleString([], { dateStyle: 'medium', timeStyle: 'short' }) : '—';
+const cookie = n => document.cookie.split('; ').find(x => x.startsWith(n + '='))?.slice(n.length + 1);
+const qs = o => new URLSearchParams(Object.entries(o).filter(([, v]) => v !== '' && v != null)).toString();
+
+let me = null, view = 'home', par = null, unread = 0, rtok = 0, toastT = 0;
+let F = {};      // list filters that persist while navigating
+let NEW = {};    // new-complaint draft (cleared when you leave that page)
+let FLOW = {};   // login / reset / register step state (never holds passwords)
+let CATS = null, HOSTELS = null;
+const STAT = ['Submitted', 'Acknowledged', 'In Progress', 'Resolved', 'Closed'];
+const NEXT = { 'Submitted': ['Acknowledged', 'In Progress'], 'Acknowledged': ['In Progress', 'Resolved'], 'In Progress': ['Resolved'], 'Resolved': ['Closed', 'In Progress'], 'Closed': ['In Progress'] };
+const GEO_FREE = ['Safety / Urgent', 'Security', 'Rules & Conduct'];   // location check does not apply to these
+const FLOORS = ['Ground floor', '1st floor', '2nd floor', '3rd floor', '4th floor', 'Terrace / roof', 'Outside / other'], WHENS = ['Morning', 'Afternoon', 'Evening', 'Night'];
+const CATIC = { 'Food & Mess': '🍽️', 'Laundry': '🧺', 'Room & Maintenance': '🛠️', 'Hostel Services': '🏠', 'Transport': '🚌', 'Staff / Management': '🧑‍💼', 'Safety / Urgent': '🚨', 'Gym': '🏋️', 'Security': '🛡️', 'Rules & Conduct': '📜', 'Others': '💬' };
+const isAdm = () => !!me && me.role !== 'student';
+const dash = () => isAdm() ? 'adash' : 'sdash';
+
+// ---------- API ----------
+async function api(method, url, body) {
+  const h = {}, isF = typeof FormData !== 'undefined' && body instanceof FormData;
+  if (body !== undefined && !isF) h['content-type'] = 'application/json';
+  if (method !== 'GET') { const c = cookie('hc_csrf'); if (c) h['x-csrf'] = c; }
+  let r;
+  try { r = await fetch(url, { method, headers: h, credentials: 'same-origin', body: body === undefined ? undefined : isF ? body : JSON.stringify(body) }); }
+  catch { throw new Error('Cannot reach the server. Check your connection.'); }
+  const json = (r.headers.get('content-type') || '').includes('json');
+  const data = json ? await r.json() : await r.text();
+  if (r.status === 401 && me) { me = null; unread = 0; FLOW = {}; go('slogin'); throw new Error('Your session expired. Please sign in again.'); }
+  if (!r.ok) throw new Error((json && data.error) || (r.status === 429 ? 'Too many requests. Please wait a moment.' : `Request failed (${r.status})`));
+  return data;
+}
+const GET = u => api('GET', u), POST = (u, b) => api('POST', u, b ?? {}), PATCH = (u, b) => api('PATCH', u, b);
+
+// ---------- UI helpers ----------
+function toast(t, ms = 3200) {
+  const e = $('toast'); e.textContent = t; e.style.display = 'block';
+  clearTimeout(toastT); toastT = setTimeout(() => { e.style.display = 'none'; }, ms);
+}
+const badge = c => `<span class="bd ${esc(c.status.replace(' ', ''))}">${{ Submitted: '🟡', Acknowledged: '🟡', 'In Progress': '🔵', Resolved: '🟢', Closed: '🟢' }[c.status] || ''} ${esc(c.status)}</span>`
+  + (c.priority === 'Urgent' ? ' <span class="bd Urgent">🔴 Urgent</span>' : '') + (c.is_private ? ' <span class="tag">Private</span>' : '');
+const fld = (id, label, o = {}) => `<label for="${id}">${esc(label)}</label><input id="${id}" name="${o.name || id}" type="${o.type || 'text'}"${o.req ? ' required' : ''}${o.ac ? ` autocomplete="${o.ac}"` : ''}${o.mode ? ` inputmode="${o.mode}"` : ''}${o.max ? ` maxlength="${o.max}"` : ''}${o.min ? ` minlength="${o.min}"` : ''}${o.ph ? ` placeholder="${esc(o.ph)}"` : ''}${o.step ? ` step="${o.step}"` : ''} value="${esc(o.val ?? '')}">`;
+const sel = (id, label, opts, val, o = {}) => `${o.nolabel ? '' : `<label for="${id}">${esc(label)}</label>`}<select id="${id}" name="${o.name || id}"${o.nolabel ? ` aria-label="${esc(label)}"` : ''}${o.change ? ` data-change="${o.change}"` : ''}>${opts.map(x => { const [v, t] = Array.isArray(x) ? x : [x, x]; return `<option value="${esc(v)}"${String(v) === String(val ?? '') ? ' selected' : ''}>${esc(t)}</option>`; }).join('')}</select>`;
+const card = h => `<div class="card">${h}</div>`;
+const formData = f => Object.fromEntries(new FormData(f));
+const complaintList = (l, empty = 'No complaints yet — nothing to show.') => l.map(c => `<div class="card" style="cursor:pointer" role="link" tabindex="0" data-act="go" data-v="det" data-p="${esc(c.id)}"><b>${esc(c.title)}</b><div class="mu">${esc(c.id)} · ${esc(c.category)} · ${fd(c.created_at)}</div>${badge(c)}</div>`).join('') || `<div class="card mu">${esc(empty)}</div>`;
+const needCats = async () => (CATS ||= await GET('/api/categories'));
+const needHostels = async () => (HOSTELS ||= await GET('/api/hostels'));
+
+
+// ---------- app menu, theme, scroll guide ----------
+const ICON = {
+  home: '<path d="M3 11l9-7 9 7"/><path d="M5 10v10h14V10"/>',
+  hostel: '<rect x="4" y="3" width="16" height="18" rx="2"/><path d="M9 8h2M13 8h2M9 12h2M13 12h2M10 21v-4h4v4"/>',
+  user: '<circle cx="12" cy="8" r="4"/><path d="M4 21c1-4 4-6 8-6s7 2 8 6"/>',
+  shield: '<path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/><path d="M9 12l2 2 4-4"/>',
+  id: '<rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="9" cy="11" r="2"/><path d="M14 10h4M14 14h4M6 16c.5-1.5 1.5-2 3-2s2.5.5 3 2"/>',
+  grid: '<rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/>',
+  plus: '<circle cx="12" cy="12" r="9"/><path d="M12 8v8M8 12h8"/>',
+  list: '<path d="M8 6h12M8 12h12M8 18h12"/><circle cx="4" cy="6" r="1"/><circle cx="4" cy="12" r="1"/><circle cx="4" cy="18" r="1"/>',
+  bell: '<path d="M6 16v-5a6 6 0 0112 0v5l2 2H4z"/><path d="M10 21h4"/>',
+  cog: '<circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M5 5l2 2M17 17l2 2M19 5l-2 2M7 17l-2 2"/>',
+  users: '<circle cx="9" cy="8" r="3.5"/><path d="M2 20c.5-3.5 3-5 7-5s6.5 1.5 7 5"/><path d="M16 5a3.5 3.5 0 010 6M18 15c2 .5 3.5 2 4 5"/>',
+  staff: '<rect x="3" y="7" width="18" height="13" rx="2"/><path d="M9 7V5h6v2M3 13h18"/>',
+  audit: '<rect x="6" y="4" width="12" height="17" rx="2"/><path d="M9 4h6v3H9zM9 12h6M9 16h6"/>',
+  out: '<path d="M9 4H5v16h4M16 8l4 4-4 4M20 12H9"/>',
+  help: '<circle cx="12" cy="12" r="9"/><path d="M9.5 9a2.5 2.5 0 114 2c-1 .7-1.5 1.2-1.5 2.5M12 17h.01"/>'
+};
+const ic = n => `<svg viewBox="0 0 24 24" aria-hidden="true">${ICON[n]}</svg>`;
+const rootEl = document.documentElement;
+let MO = false, MQ = '', guideT = 0, guideBack = null;
+
+function menuGroups() {
+  const T = (v, t, d, i, x = {}) => ({ v, t, d, i, ...x });
+  const bell = T('notifs', 'Notifications', unread ? `${unread} unread` : 'You’re all caught up', 'bell', { badge: unread || '' });
+  const out = { act: 'logout', t: 'Log out', d: 'End this session', i: 'out', danger: 1 };
+  if (!me) return [
+    ['Explore', [T('home', 'The story', 'How HostelCare works', 'home'), T('dir', 'Find your hostel', 'Browse and search hostels', 'hostel')]],
+    ['Sign in', [T('slogin', 'Student login', 'Mobile number or email', 'user'), T('alogin', 'Warden or admin login', 'Manage and answer complaints', 'shield'), T('sreg', 'Create a student account', 'You need your hostel’s Resident ID', 'id')]],
+    ...(view === 'home' ? [['Help', [{ act: 'guide', t: 'How to scroll', d: 'Show the scroll guide again', i: 'help' }]]] : [])];
+  if (me.role === 'student') return [
+    ['Complaints', [T('sdash', 'Home', 'Your complaints at a glance', 'grid'), T('snew', 'New complaint', 'Report a problem in a minute', 'plus'), T('mine', 'My complaints', 'Track every one', 'list'), T('comm', 'Community', 'Announcements from your warden', 'users'), T('study', 'Study', 'Free books, courses and notes', 'audit')]],
+    ['You', [bell, T('info', 'Account', 'Your details and password', 'cog'), out]]];
+  return [
+    ['Manage', [T('adash', 'Dashboard', 'Stats and all complaints', 'grid'), T('comm', 'Community', 'Post announcements', 'users'), T('students', 'Residents', 'Resident IDs and students', 'users'), T('staff', 'Staff', 'Electricians, mess, housekeeping', 'staff'), T('studyadm', 'Study resources', 'Approve and manage study links', 'list'), ...(me.role === 'super_admin' ? [T('hostels', 'Hostels', 'Add and edit hostels', 'hostel')] : []), T('audit', 'Audit log', 'Who did what, and when', 'audit')]],
+    ['You', [bell, T('info', 'Account', 'Your details and password', 'cog'), out]]];
+}
+function menuListHTML() {
+  const q = MQ.trim().toLowerCase(); let n = 0, out = '';
+  for (const [g, list] of menuGroups()) {
+    const L = list.filter(x => !q || (x.t + ' ' + x.d).toLowerCase().includes(q)); if (!L.length) continue;
+    out += `<h3 class="mg">${esc(g)}</h3>` + L.map(x => `<button type="button" class="mi${x.danger ? ' dg' : ''}" style="--i:${n++}" data-act="${x.act || 'go'}"${x.v ? ` data-v="${x.v}"` : ''}${x.v && x.v === view ? ' aria-current="page"' : ''}>${ic(x.i)}<span><b>${esc(x.t)}</b><small>${esc(x.d)}</small></span>${x.badge ? `<em class="cnt">${esc(x.badge)}</em>` : ''}</button>`).join('');
+  }
+  return out || `<p class="mu mnone">Nothing matches “${esc(MQ)}”.</p>`;
+}
+function menuWhoHTML() {
+  if (!me) return `<div class="av g">${ic('user')}</div><div><b>Welcome</b><small>Sign in to track your complaints</small></div>`;
+  const ini = me.name.split(/\s+/).map(w => w[0]).slice(0, 2).join('').toUpperCase();
+  const role = { student: 'Student', warden: 'Warden', super_admin: 'Super admin' }[me.role] || me.role;
+  return `<div class="av">${esc(ini)}</div><div style="min-width:0"><b>${esc(me.name)}</b><small>${esc(me.hostel || 'All hostels')}${me.room ? ' · Room ' + esc(me.room) : ''}</small><span class="role">${role}</span></div>`;
+}
+function paintMenu() {
+  const keep = MO && $('mlist').contains(document.activeElement) ? document.activeElement.dataset.v || document.activeElement.dataset.act : null;
+  $('mwho').innerHTML = menuWhoHTML(); $('mlist').innerHTML = menuListHTML();
+  if (keep) ($('mlist').querySelector(`[data-v="${keep}"],[data-act="${keep}"]`) || $('mlist').querySelector('.mi'))?.focus({ preventScroll: true });
+}
+const REDUCE = matchMedia('(prefers-reduced-motion:reduce)').matches;
+// Small motion layer: staggered entrance, count-up numbers, growing bars. Skipped when the user prefers reduced motion.
+function enhance(root) {
+  if (REDUCE) return;
+  root.querySelectorAll('.card,.qa button,.cat,.stp').forEach((e, i) => { e.classList.add('rise'); e.style.setProperty('--r', Math.min(i, 12)); });
+  root.querySelectorAll('[data-count]').forEach(e => {
+    const to = parseFloat(e.dataset.count); if (!isFinite(to)) return;
+    const dec = (String(e.dataset.count).split('.')[1] || '').length, t0 = performance.now(), dur = 700;
+    const step = t => { const k = Math.min(1, (t - t0) / dur); e.textContent = (k < 1 ? to * (1 - Math.pow(1 - k, 3)) : to).toFixed(dec); if (k < 1) requestAnimationFrame(step); };
+    e.textContent = (0).toFixed(dec); requestAnimationFrame(step);
+  });
+  const bars = [...root.querySelectorAll('.bar')]; bars.forEach(b => { b.dataset.w = b.style.width; b.style.width = '0'; });
+  requestAnimationFrame(() => requestAnimationFrame(() => bars.forEach(b => { b.style.width = b.dataset.w; })));
+}
+function nav() {
+  let fb = $('fab');
+  if (!fb) { fb = document.createElement('button'); fb.id = 'fab'; fb.type = 'button'; fb.className = 'fab p'; fb.dataset.act = 'go'; fb.dataset.v = 'snew'; fb.setAttribute('aria-label', 'New complaint'); fb.textContent = '+'; document.body.appendChild(fb); }
+  fb.classList.toggle('on', !!me && me.role === 'student' && ['mine', 'det', 'comm', 'study', 'notifs', 'info'].includes(view));
+  $('mdot').style.display = unread ? 'block' : 'none';
+  $('menuBtn').setAttribute('aria-label', 'Menu' + (unread ? `, ${unread} unread notifications` : ''));
+  paintMenu();
+}
+function openMenu() {
+  if (MO) return; hideGuide(true);
+  MO = true; MQ = ''; $('mq').value = ''; paintMenu();
+  document.body.classList.add('mo'); $('appmenu').inert = false;
+  $('menuBtn').setAttribute('aria-expanded', 'true');
+  if (!matchMedia('(pointer:coarse)').matches) setTimeout(() => $('mlist').querySelector('.mi')?.focus({ preventScroll: true }), 80);
+}
+function closeMenu(refocus = true) {
+  if (!MO) return; MO = false;
+  document.body.classList.remove('mo'); $('appmenu').inert = true;
+  $('menuBtn').setAttribute('aria-expanded', 'false');
+  if (refocus) $('menuBtn').focus({ preventScroll: true });
+}
+function setTheme(t, save) {
+  rootEl.dataset.theme = t;
+  if (save) { try { localStorage.setItem('hc_theme', t); } catch { /* storage blocked */ } }
+  const b = $('themeBtn'); b.setAttribute('aria-label', t === 'dark' ? 'Switch to light theme' : 'Switch to dark theme'); b.title = b.getAttribute('aria-label');
+  document.querySelector('meta[name="theme-color"]')?.setAttribute('content', t === 'dark' ? '#0f1420' : '#f5f7fb');
+}
+setTheme(rootEl.dataset.theme || 'light', false);
+matchMedia('(prefers-color-scheme: dark)').addEventListener?.('change', e => { let s = null; try { s = localStorage.getItem('hc_theme'); } catch { /* */ } if (!s) setTheme(e.matches ? 'dark' : 'light', false); });
+
+function guideSeen() { try { return localStorage.getItem('hc_guide_off') === '1' || sessionStorage.getItem('hc_guide_seen') === '1'; } catch { return false; } }
+function showGuide() {
+  const g = $('guide'); if (!g.hidden || MO || view !== 'home' || me) return;
+  $('gdc').classList.toggle('t', matchMedia('(pointer:coarse)').matches);
+  guideBack = document.activeElement; g.hidden = false; document.body.classList.add('gl');
+  requestAnimationFrame(() => { g.classList.add('on'); $('gdgo').focus({ preventScroll: true }); });
+}
+function hideGuide(quiet) {
+  clearTimeout(guideT); const g = $('guide'); if (g.hidden) return;
+  if (!quiet) { try { sessionStorage.setItem('hc_guide_seen', '1'); if ($('gdoff').checked) localStorage.setItem('hc_guide_off', '1'); } catch { /* storage blocked */ } }
+  g.classList.remove('on'); document.body.classList.remove('gl');
+  setTimeout(() => { g.hidden = true; }, 230);
+  if (!quiet && guideBack?.focus) guideBack.focus({ preventScroll: true });
+}
+function planGuide() {
+  clearTimeout(guideT);
+  if (view === 'home' && !me) { if (!guideSeen()) guideT = setTimeout(showGuide, 1800); } else hideGuide(true);
+}
+function trap(e, box) {
+  if (e.key !== 'Tab') return;
+  const f = [...box.querySelectorAll('button,input,[href],select,textarea')].filter(x => !x.disabled && x.getClientRects().length);
+  if (!f.length) return; const a = f[0], z = f[f.length - 1];
+  if (e.shiftKey && document.activeElement === a) { e.preventDefault(); z.focus(); }
+  else if (!e.shiftKey && document.activeElement === z) { e.preventDefault(); a.focus(); }
+}
+document.addEventListener('keydown', e => {
+  const typing = e.target.matches?.('input,textarea,select');
+  if (!$('guide').hidden) { if (e.key === 'Escape') { e.preventDefault(); hideGuide(); } else trap(e, $('gdc')); return; }
+  if (MO) {
+    if (e.key === 'Escape') { e.preventDefault(); closeMenu(); return; }
+    trap(e, $('appmenu'));
+    const items = [...$('mlist').querySelectorAll('.mi')], i = items.indexOf(document.activeElement);
+    if (e.key === 'ArrowDown') { e.preventDefault(); (items[i + 1] || items[0])?.focus(); }
+    else if (e.key === 'ArrowUp') { e.preventDefault(); if (i <= 0) $('mq').focus(); else items[i - 1].focus(); }
+    else if (e.key === 'Home' && !typing) { e.preventDefault(); items[0]?.focus(); }
+    else if (e.key === 'End' && !typing) { e.preventDefault(); items[items.length - 1]?.focus(); }
+    else if (e.key === 'Enter' && e.target.id === 'mq') { e.preventDefault(); items[0]?.click(); }
+    else if ((e.key === 'm' || e.key === 'M') && !typing && !e.ctrlKey && !e.metaKey) { e.preventDefault(); closeMenu(); }
+    return;
+  }
+  if ((e.key === 'm' || e.key === 'M') && !typing && !e.ctrlKey && !e.metaKey && !e.altKey) { e.preventDefault(); openMenu(); }
+});
+async function refreshUnread() {
+  if (!me) return;
+  try { unread = (await GET('/api/notifications')).filter(n => !n.read).length; nav(); } catch { /* ignore */ }
+}
+
+// ---------- routing ----------
+const GUEST = new Set(['home', 'dir', 'slogin', 'alogin', 'sreg', 'forgot', 'reset', 'ever']);
+const AUTHPAGES = new Set(['slogin', 'alogin', 'sreg', 'forgot', 'reset', 'ever']);
+const ROLE = { sdash: 'student', snew: 'student', mine: 'student', adash: 'admin', students: 'admin', staff: 'admin', audit: 'admin', study: 'student', studyadm: 'admin', hostels: 'super_admin' };
+function go(v, p, push = true) {
+  closeMenu(false);
+  view = v; par = p ?? null;
+  if (v !== 'snew') NEW = {};
+  if (!['ever', 'reset', 'sreg'].includes(v)) FLOW = {};
+  if (push) try { history.pushState({ v, p: par }, ''); } catch { /* sandboxed frame */ }
+  render(); scrollTo(0, 0);
+}
+addEventListener('popstate', e => { if (e.state) go(e.state.v, e.state.p, false); });
+
+async function render() {
+  const t = ++rtok;
+  if (!me && !GUEST.has(view)) view = 'home';
+  if (me && (view === 'home' || AUTHPAGES.has(view))) view = dash();
+  const need = ROLE[view];
+  if (me && need && !(need === 'admin' ? isAdm() : me.role === need)) view = dash();
+  if (!V[view]) view = 'home';
+  nav();
+  const m = $('m'), slow = setTimeout(() => { if (t === rtok) m.innerHTML = '<p class="mu" style="padding:14px">Loading…</p>'; }, 150);
+  try { const html = await V[view](); clearTimeout(slow); if (t !== rtok) return; m.innerHTML = html; enhance(m); }
+  catch (e) {
+    clearTimeout(slow); if (t !== rtok) return;
+    m.innerHTML = card(`<b>Couldn’t load this page</b><p class="mu">${esc(e.message)}</p><button type="button" data-act="retry">Try again</button>`);
+  }
+  if (window.lp) window.lp(view === 'home' && !me);
+  planGuide();
+}
+
+// ---------- views ----------
+const V = {};
+V.home = () => `<div class="lscrim" id="lscrim"></div><section class="lh" id="lh"><h1 aria-label="HostelCare"><span id="lh1">HOSTEL</span><span id="lh2">CARE</span></h1><p>Every hostel concern. One platform.</p></section>
+<aside class="lc" data-w=".26,.39"><i>01 / REGISTER</i><h2>Only real residents get in.</h2><p>Your hostel issues a Resident ID.<br>We check it, the mobile number and an OTP.</p></aside>
+<aside class="lc r" data-w=".38,.5"><i>02 / COMPLAIN</i><h2>Eleven categories. One form.</h2><p>Food, laundry, room, services,<br>transport, gym, staff, safety,<br>security, rules and conduct, others.<br>Photo evidence. Private option.</p></aside>
+<aside class="lc" data-w=".49,.61"><i>03 / TRACK</i><h2>Know where it stands.</h2><p>Submitted, Acknowledged, In Progress,<br>Resolved, Closed. Every update notified.</p></aside>
+<aside class="lc r" data-w=".63,.85"><i>04 / RESOLVE</i><h2>Confirm it. Or reopen it.</h2><p>Wardens assign staff and reply.<br>You rate the fix.</p></aside>
+<section class="lcta" id="lcta"><h2>Find your<br>hostel.</h2><div class="ctabox"><div class="row"><button type="button" class="pri" data-act="go" data-v="dir">Find Your Hostel</button><button type="button" data-act="go" data-v="slogin">Student Login</button><button type="button" data-act="go" data-v="alogin">Warden Login</button></div><small>Complaints, tracked from report to resolution.</small></div></section><div id="ltrack" style="height:400vh"></div>`;
+
+const hostelCards = () => {
+  const q = (F.dq || '').toLowerCase(), t = F.dt || '';
+  return (HOSTELS || []).filter(h => (!t || h.type === t) && ((h.name || '') + (h.area || '')).toLowerCase().includes(q)).map(h => `<div class="card"><b>${esc(h.name)}</b><div class="mu">${esc(h.area)} · ${esc(h.type)} · ${h.beds ? esc(h.beds) + ' beds' : 'beds not listed'}<br>${esc(h.address)}<br>${esc(h.phone || 'Via hostel office')}<br>${esc(h.facilities)}</div><br><button type="button" class="p" data-act="reg" data-h="${esc(h.id)}">Register here</button></div>`).join('') || '<div class="card mu">No hostels match.</div>';
+};
+V.dir = async () => { await needHostels(); return `<h2>Hostel directory</h2><div class="row"><input id="dq" placeholder="Search name or locality" aria-label="Search hostels" data-input="dirq" value="${esc(F.dq || '')}"><select id="dt" aria-label="Hostel type" data-change="dirtype"><option value="">All types</option>${['Boys', 'Girls', 'Co-ed'].map(x => `<option${F.dt === x ? ' selected' : ''}>${x}</option>`).join('')}</select></div><div class="g" id="hl">${hostelCards()}</div>`; };
+
+const loginForm = (title, admin) => card(`<h2>${title}</h2><form data-submit="login">${fld('u', admin ? 'Email' : 'Mobile or email', { name: 'identifier', ac: 'username', req: 1, max: 120 })}${fld('p', 'Password', { type: 'password', ac: 'current-password', req: 1, max: 200 })}<div class="row"><button class="p" type="submit">Login</button>${admin ? '' : '<button type="button" data-act="go" data-v="sreg">Register</button>'}<button type="button" data-act="go" data-v="forgot">Forgot password</button></div></form>${admin ? '<p class="mu">Warden accounts are created by the super-admin.</p>' : ''}`).replace('class="card"', 'class="card narrow"');
+V.slogin = () => loginForm('Student login', false);
+V.alogin = () => loginForm('Warden / admin login', true);
+V.ever = () => !FLOW.ev ? V.slogin() : card(`<h2>Check your email</h2><p class="mu">We sent a 6-digit code to ${esc(FLOW.ev.hint)}. It expires in 5 minutes.</p>${FLOW.ev.dev ? `<p class="msg"><b>Dev mode:</b> code ${esc(FLOW.ev.dev)}</p>` : ''}<form data-submit="verify">${fld('ec', 'Code', { name: 'code', mode: 'numeric', max: 6, min: 6, ac: 'one-time-code', req: 1 })}<div class="row"><button class="p" type="submit">Verify &amp; log in</button><button type="button" data-act="go" data-v="slogin">Back</button></div></form>`).replace('class="card"', 'class="card narrow"');
+V.forgot = () => card(`<h2>Forgot password</h2><p class="mu">Enter your mobile or email. If the account exists we email a reset code.</p><form data-submit="forgot">${fld('fu', 'Mobile or email', { name: 'identifier', ac: 'username', req: 1, max: 120 })}<div class="row"><button class="p" type="submit">Send code</button><button type="button" data-act="go" data-v="slogin">Back</button></div></form>`).replace('class="card"', 'class="card narrow"');
+V.reset = () => !FLOW.rs ? V.forgot() : card(`<h2>Set a new password</h2>${FLOW.rs.dev ? `<p class="msg"><b>Dev mode:</b> code ${esc(FLOW.rs.dev)}</p>` : ''}<form data-submit="reset">${fld('rc', 'Code from email', { name: 'code', mode: 'numeric', max: 6, min: 6, ac: 'one-time-code', req: 1 })}${fld('rp', 'New password (8+ characters, wardens 12+)', { name: 'password', type: 'password', ac: 'new-password', req: 1, min: 8, max: 100 })}<button class="p" type="submit">Update password</button></form>`).replace('class="card"', 'class="card narrow"');
+
+V.sreg = async () => {
+  if (FLOW.rg) return card(`<h2>Verify your mobile</h2><p class="mu">Enter the 6-digit code sent by SMS to your hostel-registered number.</p>${FLOW.rg.dev ? `<p class="msg"><b>Dev mode:</b> code ${esc(FLOW.rg.dev)}</p>` : ''}<form data-submit="regverify">${fld('rgc', 'Code', { name: 'code', mode: 'numeric', max: 6, min: 6, ac: 'one-time-code', req: 1 })}<div class="row"><button class="p" type="submit">Verify &amp; create account</button><button type="button" data-act="regcancel">Cancel</button></div></form>`).replace('class="card"', 'class="card narrow"');
+  const hs = await needHostels();
+  return card(`<h2>Student registration</h2><p class="mu">You need the Resident ID issued by your hostel. We verify it, your mobile number and an SMS code.</p><form data-submit="regstart">${fld('rn', 'Full name', { name: 'name', ac: 'name', req: 1, min: 2, max: 80 })}${sel('rh', 'Hostel', hs.map(h => [h.id, h.name]), par, { name: 'hostelId' })}${fld('rr', 'Resident ID', { name: 'residentId', req: 1, min: 3, max: 30 })}${fld('rm', 'Mobile (as registered with the hostel)', { name: 'mobile', type: 'tel', mode: 'tel', ac: 'tel', req: 1, max: 16 })}${fld('re', 'Email (used for login codes)', { name: 'email', type: 'email', ac: 'email', req: 1, max: 120 })}${fld('ro', 'Room', { name: 'room', max: 20 })}${fld('rpw', 'Password (8+ characters)', { name: 'password', type: 'password', ac: 'new-password', req: 1, min: 8, max: 100 })}<div class="row"><button class="p" type="submit">Send SMS code</button><button type="button" data-act="go" data-v="slogin">I already have an account</button></div></form>`).replace('class="card"', 'class="card wide"');
+};
+
+V.sdash = async () => {
+  const l = await GET('/api/complaints?limit=100'), ps = await GET('/api/posts'), n = s => l.filter(c => s.includes(c.status)).length;
+  return `<h2>Hi, ${esc(me.name)}</h2><p class="mu">${esc(me.hostel)} · Room ${esc(me.room || '—')}</p><div class="g g2">${[['Total', l.length, ''], ['Pending', n(['Submitted', 'Acknowledged']), 'Submitted'], ['Processing', n(['In Progress']), 'In Progress'], ['Resolved', n(['Resolved', 'Closed']), 'Resolved']].map(x => `<div class="card" role="link" tabindex="0" style="cursor:pointer" data-act="tile" data-s="${x[2]}"><div class="st" data-count="${x[1]}">${x[1]}</div><div class="mu">${x[0]} ›</div></div>`).join('')}</div>
+${ps[0] ? `<div class="card" role="link" tabindex="0" style="cursor:pointer" data-act="go" data-v="comm"><b>${ps[0].pinned ? '📌 ' : ''}${esc(ps[0].title)}</b><div class="mu">${esc(ps[0].kind)} · ${fd(ps[0].created_at)} · Tap to read</div></div>` : ''}<div class="qa"><button type="button" class="p" data-act="go" data-v="snew"><span class="e">➕</span><b>New complaint</b><small>Report a problem in a minute</small></button><button type="button" data-act="go" data-v="mine"><span class="e">📋</span><b>My complaints</b><small>Track every one</small></button><button type="button" data-act="go" data-v="study"><span class="e">📚</span><b>Study Hub</b><small>Free NPTEL, SWAYAM, NCERT</small></button><button type="button" data-act="go" data-v="notifs"><span class="e">🔔</span><b>Notifications</b><small>${unread ? unread + ' unread' : 'All caught up'}</small></button></div>
+${(() => { const r = l.find(c => c.status === 'Resolved'); return r ? `<div class="card" role="link" tabindex="0" style="cursor:pointer;border-color:var(--pr)" data-act="go" data-v="det" data-p="${esc(r.id)}"><b>Action needed:</b> “${esc(r.title)}” is marked resolved. Tap to confirm or reopen.</div>` : ''; })()}
+<h3>Recent</h3>${complaintList(l.slice(0, 5))}`;
+};
+
+V.mine = async () => {
+  const cats = await needCats(), f = F.m || {};
+  const items = await GET('/api/complaints?' + qs({ status: f.s, category: f.k, q: f.q, limit: 25, offset: 0 }));
+  F.mp = { items, more: items.length === 25 };
+  return `<h2>My complaints</h2><div class="row"><input id="mq" aria-label="Search by complaint ID" placeholder="Search ID (HC-…)" value="${esc(f.q || '')}" data-change="mfilter-q">${sel('ms', 'Status', [['', 'All status'], ...STAT], f.s, { change: 'mfilter-s', nolabel: 1 })}${sel('mk', 'Category', [['', 'All categories'], ...cats.map(c => c.name)], f.k, { change: 'mfilter-k', nolabel: 1 })}</div><div id="ml">${complaintList(items)}</div><div id="mm">${F.mp.more ? '<button type="button" data-act="more">Load more</button>' : ''}</div>`;
+};
+
+// ---- new complaint ----
+const geoText = () => GEO_FREE.includes(NEW.c) ? 'Location is optional for this category. You do not need to be at the hostel to report.' : NEW.geo ? `Location captured (accuracy ${Math.round(NEW.geo.accuracy)} m). The server checks you are at your hostel when you submit.` : 'Not verified yet. Tap the button. You must be within 10 m of your hostel. (Not needed for Safety / Urgent, Security or Rules & Conduct.)';
+V.snew = async () => {
+  const cats = await needCats();
+  if (!NEW.c) return `<h2>Choose a category</h2><p class="mu">What is this about? Tap one to start.</p><div class="cats">${cats.map(c => `<button type="button" class="cat" data-act="newcat" data-c="${esc(c.name)}"><span class="ce">${CATIC[c.name] || '📝'}</span><b>${esc(c.name)}</b></button>`).join('')}</div>`;
+  const cat = cats.find(c => c.name === NEW.c), d = NEW.d || {};
+  if (NEW.cf) return card(`<h3>Confirm</h3><p><b>${esc(d.title)}</b><br>${esc(NEW.c)} › ${esc(d.subcategory)} · ${esc(d.priority)}${d.isPrivate ? ' · Private' : ''}</p><p>${esc(d.description)}</p><p class="mu">${esc(d.location || 'No location given')}${d.floor ? ' · ' + esc(d.floor) : ''}${d.when ? ' · ' + esc(d.when) : ''}${d.whenText ? ' (' + esc(d.whenText) + ')' : ''}${d.room ? ' · Room ' + esc(d.room) : ''} · Photo: ${esc(NEW.file ? NEW.file.name : 'none')}</p>${d.involved ? `<p class="mu">Student named: ${esc(d.involved)}</p>` : ''}<div class="row"><button type="button" class="p" data-act="submitc">Submit</button><button type="button" data-act="editc">Edit</button></div>`);
+  const free = GEO_FREE.includes(NEW.c), conduct = NEW.c === 'Rules & Conduct', secu = NEW.c === 'Security';
+  const hint = secu ? '<p class="msg">This is for security staff conduct. For emergencies use Safety / Urgent.</p>' : conduct ? '<p class="msg">Describe what happened. Do not accuse without evidence. Your name stays private.</p>' : '';
+  const where = conduct
+    ? `${sel('nfl', 'Floor / area', [['', 'Choose…'], ...FLOORS], d.floor, { name: 'floor' }).replace('<select', '<select required')}${fld('nl', 'Where exactly (washroom, corridor, room number)', { name: 'location', req: 1, max: 80, val: d.location })}${sel('nw', 'When did it happen', [['', 'Choose…'], ...WHENS], d.when, { name: 'when' }).replace('<select', '<select required')}${fld('nwt', 'Date or time details (optional)', { name: 'whenText', max: 80, val: d.whenText })}${fld('ni', 'Student involved (optional, only if you are sure)', { name: 'involved', max: 80, val: d.involved })}`
+    : `${fld('nl', 'Location (e.g. Mess hall, Floor 2)', { name: 'location', max: 80, val: d.location })}${fld('nr', 'Room', { name: 'room', max: 20, val: d.room ?? me.room ?? '' })}`;
+  const priv = conduct
+    ? '<div class="chk"><input type="checkbox" id="npv" name="isPrivate" checked disabled><label for="npv">Private: your name and room are hidden from staff views. Always on for this category.</label></div>'
+    : `<div class="chk"><input type="checkbox" id="npv" name="isPrivate"${(d.isPrivate ?? secu) ? ' checked' : ''}><label for="npv">Private: hide my name and room from staff views</label></div>`;
+  const geoCard = free
+    ? `<div class="card"><b>Location (optional)</b><p class="mu" id="gs">${geoText()}</p></div>`
+    : `<div class="card"><b>Location check</b><p class="mu" id="gs">${geoText()}</p><button type="button" data-act="geo">Verify my location</button></div>`;
+  return card(`<h3>${CATIC[NEW.c] || ''} ${esc(NEW.c)}</h3>${hint}<form data-submit="review">${fld('nt', 'Title', { name: 'title', req: 1, min: 3, max: 120, val: d.title })}${sel('nsb', 'Subcategory', cat.subcategories, d.subcategory, { name: 'subcategory' })}<label for="nd">Description</label><textarea id="nd" name="description" rows="4" required minlength="5" maxlength="1500">${esc(d.description || '')}</textarea>${where}${sel('np', 'Priority', ['Normal', 'High', 'Urgent'], d.priority || 'Normal', { name: 'priority' })}${priv}<label for="nf">Photo (optional, JPEG/PNG/WebP, max 2 MB)</label><input type="file" id="nf" name="photo" accept="image/jpeg,image/png,image/webp">${NEW.file ? `<p class="mu">Selected: ${esc(NEW.file.name)}</p>` : ''}${geoCard}<div class="row"><button class="p" type="submit">Review</button><button type="button" data-act="newreset">Change category</button></div></form>`);
+};
+
+// ---- complaint detail ----
+V.det = async () => {
+  const c = await GET('/api/complaints/' + encodeURIComponent(par)), adm = isAdm();
+  const staff = adm ? (await GET('/api/admin/staff')).filter(s => s.active && s.hostel_id === c.hostel_id) : [];
+  const who = c.student_name ? esc(c.student_name) : '🔒 Confidential', roleLbl = r => r === 'student' ? 'Student' : r === 'warden' ? 'Warden' : 'Admin';
+  const msgs = c.messages.map(m => `<div class="msg${m.internal ? ' i' : ''}"><b>${m.internal ? 'Internal note' : esc(roleLbl(m.role))}</b> <span class="mu">${esc(m.author)} · ${fd(m.created_at)}</span><br>${esc(m.body)}</div>`).join('');
+  const label = s => s === 'In Progress' ? (['Resolved', 'Closed'].includes(c.status) ? 'Reopen' : 'Mark in progress') : s === 'Acknowledged' ? 'Acknowledge' : s === 'Resolved' ? 'Resolve' : 'Close';
+  const admin = adm ? `<hr><div class="row">${NEXT[c.status].map(s => `<button type="button" class="${s === 'Resolved' ? 'p' : ''}" data-act="setstatus" data-s="${esc(s)}">${label(s)}</button>`).join('')}</div>
+<label for="snote">Note for the status history (optional)</label><input id="snote" maxlength="500">
+<div class="row"><div>${sel('pr', 'Priority', ['Normal', 'High', 'Urgent'], c.priority, { change: 'setprio' })}</div><div>${sel('as', 'Assigned staff', [['', '— none —'], ...staff.map(s => [s.id, `${s.name} (${s.role})`])], c.assigned_staff_id ?? '', { change: 'assign' })}</div></div>
+${['Rules & Conduct', 'Security'].includes(c.category) ? `<div>${sel('vf', 'Verification (staff only, the reporter does not see this)', [['', 'Not reviewed yet'], ['verified', 'Verified'], ['not_verified', 'Not verified']], c.verified || '', { change: 'setverify' })}</div>` : ''}
+<form data-submit="inote"><label for="in">Internal note (staff only)</label><div class="row"><input id="in" name="body" maxlength="1000" required style="flex:1"><button type="submit">Add note</button></div></form>` : '';
+  const student = !adm && c.status === 'Resolved' ? `<hr><p><b>Your complaint has been marked as resolved.</b></p>${sel('rt', 'Rating', [5, 4, 3, 2, 1], 5)}<label for="fbt">Optional comment</label><input id="fbt" maxlength="300"><div class="row"><button type="button" class="p" data-act="resolve" data-ok="1">Issue resolved</button><button type="button" class="d" data-act="resolve" data-ok="0">Not resolved</button></div>` : '';
+  const canUpload = adm || c.status !== 'Closed';
+  const atts = c.attachments.length ? `<h4>Photos</h4><div class="thumbs">${c.attachments.map(a => `<a href="/api/attachments/${esc(a.id)}" target="_blank" rel="noopener"><img src="/api/attachments/${esc(a.id)}" alt="${a.kind === 'resolution' ? 'Resolution photo' : 'Evidence photo'}" loading="lazy"></a>`).join('')}</div>` : '';
+  return `<button type="button" data-act="back">← Back</button><div class="card"><h3>${esc(c.title)}</h3><p class="mu">${esc(c.id)} · ${esc(c.category)} › ${esc(c.subcategory)} · ${esc(c.hostel)} · ${esc(c.location || 'no location')}${c.room ? ' · Room ' + esc(c.room) : ''}</p><p>${badge(c)}</p><div class="stp" aria-label="Progress: ${esc(c.status)}">${STAT.map((x, i) => { const k = STAT.indexOf(c.status); return `<div class="s${i < k ? ' done' : i === k ? ' cur' : ''}"><i>${i < k ? '✓' : i + 1}</i><span>${esc(x)}</span></div>`; }).join('')}</div>${c.floor ? `<p class="mu">Area: ${esc(c.floor)}${c.when_part ? ' · ' + esc(c.when_part) : ''}${c.when_text ? ' (' + esc(c.when_text) + ')' : ''}</p>` : ''}${c.involved ? `<p class="mu">Student named by reporter (not verified): ${esc(c.involved)}</p>` : ''}
+<p class="mu">Submitted ${fd(c.created_at)} · Updated ${fd(c.updated_at)}${adm ? ' · Student: ' + who : ''}${c.staff_name ? ' · Staff: ' + esc(c.staff_name) : ''}${c.reopen_count ? ' · Reopened ' + c.reopen_count + '×' : ''}</p>
+<p>${esc(c.description)}</p>${atts}
+${canUpload ? `<div class="row"><input type="file" id="up" accept="image/jpeg,image/png,image/webp" multiple aria-label="Add photos"><button type="button" data-act="upload">${adm ? 'Add resolution photo' : 'Add photo'}</button></div>` : ''}
+<h4>Conversation</h4>${msgs || '<p class="mu">No replies yet.</p>'}
+<form data-submit="reply"><div class="row"><input id="rp" name="body" placeholder="Write a reply…" aria-label="Reply" maxlength="1000" required style="flex:1"><button type="submit">Send</button></div></form>
+${admin}${student}${c.feedback ? `<p>⭐ ${esc(c.feedback.rating)}/5${c.feedback.comment ? ' — ' + esc(c.feedback.comment) : ''}</p>` : ''}
+<h4>Status history</h4>${c.history.map(h => `<div class="mu">${esc(h.from_status ? h.from_status + ' → ' : '')}${esc(h.to_status)} · ${fd(h.created_at)}${h.note ? ' · ' + esc(h.note) : ''}</div>`).join('')}</div>`;
+};
+
+// ---- Study Hub (students) ----
+let STUDY = { domains: [], items: [] }, STM = null;
+const stLoad = () => {
+  if (STM && STM.uid === me.id) return STM;
+  let o = {}; try { o = JSON.parse(localStorage.getItem('hc_study_' + me.id) || '{}') || {}; } catch { /* storage blocked or corrupt */ }
+  return (STM = { uid: me.id, saved: Array.isArray(o.saved) ? o.saved : [], done: Array.isArray(o.done) ? o.done : [] });
+};
+const stStore = () => { try { localStorage.setItem('hc_study_' + me.id, JSON.stringify({ saved: STM.saved, done: STM.done })); return true; } catch { return false; } };
+const safeUrl = u => /^https?:\/\//i.test(u);
+const track = (done, total) => `<div class="mu">${done} of ${total} studied</div><div style="background:var(--bd);border-radius:5px;overflow:hidden"><div class="bar" style="width:${total ? Math.round(done / total * 100) : 0}%"></div></div>`;
+const pairOpts = () => STUDY.domains.flatMap(d => d.subjects.map(x => [d.name + '|' + x, d.name + ' › ' + x]));
+const stItem = (it, S) => {
+  const sv = S.saved.includes(it.id), dn = S.done.includes(it.id);
+  return `<div class="card"><b>${esc(it.title)}</b><div class="mu">${esc(it.source)} · <span class="tag">${esc(it.type)}</span>${dn ? ' · ✓ Studied' : ''}</div><div class="row" style="margin-top:8px">${safeUrl(it.url) ? `<a class="btn" style="background:var(--pr);color:var(--prt);border-color:var(--pr)" href="${esc(it.url)}" target="_blank" rel="noopener noreferrer">Open</a>` : ''}<button type="button" data-act="stsave" data-id="${esc(it.id)}" aria-pressed="${sv}">${sv ? '★ Saved' : '☆ Save'}</button><button type="button" data-act="stdone" data-id="${esc(it.id)}" aria-pressed="${dn}">${dn ? '✓ Studied' : 'Mark as studied'}</button><button type="button" data-act="streport" data-id="${esc(it.id)}">Report broken link</button></div></div>`;
+};
+function studyBody() {
+  const S = stLoad(), s = F.st || (F.st = {}), items = STUDY.items, q = (s.q || '').trim().toLowerCase();
+  if (q || s.saved) {
+    const r = items.filter(it => (!q || (it.title + ' ' + it.source + ' ' + it.subject + ' ' + it.domain).toLowerCase().includes(q)) && (!s.saved || S.saved.includes(it.id)));
+    return `<p class="mu">${q ? `Results for “${esc(s.q.trim())}”${s.saved ? ', saved only' : ''}` : 'Saved resources'} · ${r.length}</p>` + (r.map(it => `<div class="mu" style="margin-top:8px">${esc(it.domain)} › ${esc(it.subject)}</div>${stItem(it, S)}`).join('') || `<div class="card mu">${s.saved ? 'Nothing saved here yet. Tap ☆ Save on a resource.' : 'No matches.'}</div>`);
+  }
+  const dom = STUDY.domains.find(d => d.name === s.d);
+  if (!dom) return `<div class="g">${STUDY.domains.map(d => { const ids = items.filter(i => i.domain === d.name); return `<button type="button" data-act="stdom" data-d="${esc(d.name)}" style="text-align:left;min-height:64px"><b>${esc(d.name)}</b><div class="mu">${d.subjects.length} subjects · ${ids.filter(i => S.done.includes(i.id)).length} of ${ids.length} studied</div></button>`; }).join('')}</div>`;
+  if (!s.s || !dom.subjects.includes(s.s)) return `<button type="button" data-act="stback">← All domains</button><h3>${esc(dom.name)}</h3><div class="g">${dom.subjects.map(x => { const its = items.filter(i => i.domain === dom.name && i.subject === x); return `<button type="button" data-act="stsub" data-s="${esc(x)}" style="text-align:left;min-height:64px"><b>${esc(x)}</b>${track(its.filter(i => S.done.includes(i.id)).length, its.length)}</button>`; }).join('')}</div>`;
+  const its = items.filter(i => i.domain === dom.name && i.subject === s.s);
+  return `<button type="button" data-act="stback">← ${esc(dom.name)}</button><h3>${esc(s.s)}</h3>${track(its.filter(i => S.done.includes(i.id)).length, its.length)}<div style="margin-top:10px">${its.map(it => stItem(it, S)).join('') || '<div class="card mu">No resources yet.</div>'}</div>`;
+}
+V.study = async () => {
+  STUDY = await GET('/api/study'); const f = F.st || (F.st = {});
+  return `<h2>Study Hub</h2><p class="mu">Free resources from official sources such as NPTEL, SWAYAM, NCERT, MIT OpenCourseWare and ePG Pathshala. Everything opens on the source’s own website.</p>
+<div class="row"><input id="stq" type="search" placeholder="Search subjects, topics, sources" aria-label="Search study resources" data-input="stq" value="${esc(f.q || '')}" style="flex:1"><button type="button" data-act="stsaved" aria-pressed="${!!f.saved}">${f.saved ? '★ Saved: on' : '☆ Saved'}</button></div>
+<div id="stl">${studyBody()}</div>
+<details class="card"><summary><b>Suggest a resource</b></summary><p class="mu">Uploading files needs the real backend, so this version accepts links only. A warden reviews every suggestion before other students can see it.</p><form data-submit="stsuggest">${fld('sgt', 'Title', { name: 'title', req: 1, min: 3, max: 120 })}${fld('sgu', 'Link (https://…)', { name: 'url', type: 'url', req: 1, max: 300 })}${fld('sgs', 'Source (for example NPTEL, your own blog)', { name: 'source', req: 1, min: 2, max: 60 })}${sel('sgp', 'Subject', pairOpts(), '', { name: 'pair' })}${sel('sgy', 'Type', ['Course page', 'PDF', 'Video'], 'Course page', { name: 'type' })}<div class="chk"><input type="checkbox" id="sgo" name="own" required><label for="sgo">This is my own work or freely licensed</label></div><button class="p" type="submit">Send for review</button></form></details>`;
+};
+
+// ---- Study resources (warden / admin) ----
+V.studyadm = async () => {
+  const r = await GET('/api/admin/study'); STUDY = r;
+  const pend = r.items.filter(i => i.status === 'pending'), ok = r.items.filter(i => i.status === 'approved');
+  const link = it => safeUrl(it.url) ? `<a href="${esc(it.url)}" target="_blank" rel="noopener noreferrer">${esc(it.url)}</a>` : esc(it.url);
+  return `<h2>Study resources</h2><p class="mu">Students only see approved links. Links only: files cannot be uploaded in this demo version.</p>
+<h3>Waiting for review (${pend.length})</h3>${pend.map(it => card(`<b>${esc(it.title)}</b><div class="mu">${esc(it.source)} · ${esc(it.type)} · ${esc(it.domain)} › ${esc(it.subject)}<br>Suggested by ${esc(it.by)}, who confirmed it is their own work or freely licensed<br>${link(it)}</div><div class="row" style="margin-top:8px"><button type="button" class="p" data-act="stdecide" data-id="${esc(it.id)}" data-s="approved">Approve</button><button type="button" class="d" data-act="stdecide" data-id="${esc(it.id)}" data-s="rejected">Reject</button></div>`)).join('') || card('<p class="mu">Nothing waiting for review.</p>')}
+${card(`<b>Add a resource</b><form data-submit="stadd">${fld('ast', 'Title', { name: 'title', req: 1, min: 3, max: 120 })}${fld('asu', 'Link (https://…)', { name: 'url', type: 'url', req: 1, max: 300 })}${fld('ass', 'Source', { name: 'source', req: 1, min: 2, max: 60 })}${sel('asp', 'Subject', pairOpts(), '', { name: 'pair' })}${sel('asy', 'Type', ['Course page', 'PDF', 'Video'], 'Course page', { name: 'type' })}<button class="p" type="submit">Add</button></form>`)}
+<h3>Approved (${ok.length})</h3><div class="card tw"><table><thead><tr><th>Title<th>Source<th>Type<th>Subject<th></tr></thead><tbody>${ok.map(it => `<tr><td>${safeUrl(it.url) ? `<a href="${esc(it.url)}" target="_blank" rel="noopener noreferrer">${esc(it.title)}</a>` : esc(it.title)}<td>${esc(it.source)}<td>${esc(it.type)}<td>${esc(it.domain)} › ${esc(it.subject)}<td><button type="button" class="d" data-act="stdel" data-id="${esc(it.id)}">Remove</button></tr>`).join('') || '<tr><td colspan="5" class="mu">No resources yet.</tr>'}</tbody></table></div>`;
+};
+
+V.notifs = async () => {
+  const l = await GET('/api/notifications');
+  if (l.some(n => !n.read)) POST('/api/notifications/read').then(() => { unread = 0; nav(); }).catch(() => {});
+  return `<h2>Notifications</h2>${l.map(n => { const id = (n.body.match(/HC-\d{4}-\d{6}/) || [])[0]; return `<div class="card${n.read ? '' : ' unread'}">${esc(n.body)}<div class="mu">${fd(n.created_at)}</div>${id ? `<button type="button" data-act="go" data-v="det" data-p="${esc(id)}">Open ${esc(id)}</button>` : ''}</div>`; }).join('') || '<div class="card mu">No notifications.</div>'}`;
+};
+
+V.comm = async () => {
+  const l = await GET('/api/posts'), w = isAdm(), hs = me.role === 'super_admin' ? await GET('/api/hostels') : null;
+  const mine = p => w && (me.role === 'super_admin' || p.hostel_id === me.hostel_id);
+  return `<h2>Community</h2><p class="mu">${w ? 'Post announcements for your hostel. Students are notified.' : 'Announcements from your warden.'}</p>${w ? card(`<form data-submit="addpost"><h3>New announcement</h3>${fld('pt', 'Title', { name: 'title', req: 1, min: 3, max: 100 })}${sel('pk', 'Type', ['Notice', 'Mess', 'Maintenance', 'Event', 'Emergency'], 'Notice', { name: 'kind' })}${hs ? sel('ph', 'Hostel', [['0', 'All hostels'], ...hs.map(h => [h.id, h.name])], '0', { name: 'hostel_id' }) : ''}<label for="pm">Message</label><textarea id="pm" name="body" rows="4" required minlength="3" maxlength="1000"></textarea><div class="chk"><input type="checkbox" id="pn" name="pinned"> <label for="pn">Pin to the top</label></div><button type="submit" class="p">Post announcement</button></form>`) : ''}${l.map(p => card(`<div class="row"><span class="bd Submitted"${p.kind === 'Emergency' ? ' style="background:#fee2e2;color:#991b1b"' : ''}>${esc(p.kind)}</span>${p.pinned ? '<span class="mu">📌 Pinned</span>' : ''}<span class="mu">${fd(p.created_at)} · ${esc(p.by)}</span></div><h3 style="margin:8px 0 4px">${esc(p.title)}</h3><div>${esc(p.body).replace(/\n/g, '<br>')}</div>${mine(p) ? `<div class="row" style="margin-top:8px"><button type="button" data-act="pinpost" data-id="${p.id}">${p.pinned ? 'Unpin' : 'Pin'}</button><button type="button" data-act="delpost" data-id="${p.id}">Delete</button></div>` : ''}`)).join('') || card('<p class="mu">No announcements yet.</p>')}`;
+};
+V.info = async () => {
+  const [hs, em] = await Promise.all([needHostels(), GET('/api/emergency')]), h = hs.find(x => x.id === me.hostel_id);
+  return `<h2>${esc(h ? h.name : 'Account')}</h2>${h ? `<div class="card">${esc(h.address)}<br>${esc(h.phone || 'Via hostel office')}<br>${esc(h.facilities)}</div>` : ''}
+<h3>Emergency contacts</h3>${em.map(e => `<div class="card"><b>${esc(e.label)}</b> · <a href="tel:${esc(String(e.value).replace(/[^\d+]/g, ''))}">${esc(e.value)}</a></div>`).join('')}
+<h3>Profile</h3><div class="card">${esc(me.name)} · ${esc(me.email)}${me.mobile ? ' · ' + esc(me.mobile) : ''}${me.room ? ' · Room ' + esc(me.room) : ''}</div>
+<h3>Change password</h3>${card(`<form data-submit="chpw">${fld('cp', 'Current password', { name: 'current', type: 'password', ac: 'current-password', req: 1 })}${fld('np1', 'New password (8+ characters, wardens 12+)', { name: 'password', type: 'password', ac: 'new-password', req: 1, min: 8, max: 100 })}<button class="p" type="submit">Change password</button></form>`)}`;
+};
+
+// ---- admin ----
+const barList = (arr, empty) => { const m = Math.max(1, ...arr.map(x => x.n)); return arr.map(x => `<div class="mu">${esc(x.k)} (${x.n})</div><div class="bar" style="width:${Math.round(x.n / m * 100)}%"></div>`).join('') || `<p class="mu">${esc(empty)}</p>`; };
+const hotCards = st => {
+  const h = st.hotspots || { total: 0, byFloor: [], byTime: [], bySpot: [] }, cap = x => ({ ...x, k: x.k ? x.k[0].toUpperCase() + x.k.slice(1) : x.k });
+  const hot = card(`<b>Conduct hotspots</b><p class="mu">Rules &amp; Conduct reports by area and time of day (${h.total} in total). Patterns only: no names are shown.</p>${h.total ? `<div class="g"><div><b class="mu">Where</b>${barList(h.byFloor, 'No data')}</div><div><b class="mu">When</b>${barList(h.byTime, 'No data')}</div><div><b class="mu">Top spots</b>${barList(h.bySpot.map(cap), 'No data')}</div></div>` : '<p class="mu">No conduct reports yet.</p>'}`);
+  const unv = st.unverifiedReporters ? card(`<b>“Not verified” reports by reporter</b><p class="mu">Super admin only. “Not verified” means staff could not confirm a report, which is not proof that it was false. Look at the pattern before acting.</p>${st.unverifiedReporters.map(x => `<div class="row"><span>${esc(x.name)}</span><span class="bd ${x.n >= 3 ? 'Urgent' : 'Acknowledged'}">${esc(x.n)}</span></div>`).join('') || '<p class="mu">None yet.</p>'}`) : '';
+  return hot + unv;
+};
+V.adash = async () => {
+  const f = F.a || {}, cats = await needCats(), sq = qs({ status: f.s, category: f.k, priority: f.p, hostelId: f.h });
+  const [st, list, hostels] = await Promise.all([GET('/api/admin/stats?' + sq), GET('/api/complaints?' + qs({ status: f.s, category: f.k, priority: f.p, hostelId: f.h, limit: 50 })), me.role === 'super_admin' ? GET('/api/admin/hostels') : null]);
+  const mx = Math.max(1, ...st.byCategory.map(x => x.n)), days = st.perDay.slice(-14), dm = Math.max(1, ...days.map(x => x.n));
+  const cards = [['Students', st.students], ['Complaints', st.total], ['New', st.submitted], ['In progress', st.in_progress], ['Resolved', st.resolved], ['Urgent open', st.urgent_open], ['Avg resolution (h)', st.avg_resolution_h ?? '—'], ['Avg rating', st.avg_rating ?? '—']];
+  return `<h2>${esc(me.name)} <span class="mu">· ${esc(me.hostel || 'All hostels')}</span></h2><div class="g g2">${cards.map(x => { const t = { 'Complaints': ['', ''], 'New': ['Submitted', ''], 'In progress': ['In Progress', ''], 'Resolved': ['Resolved', ''], 'Urgent open': ['', 'Urgent'] }[x[0]]; return t ? `<div class="card" role="link" tabindex="0" style="cursor:pointer" data-act="atile" data-s="${t[0]}" data-p="${t[1]}"><div class="st"${/^\d+(\.\d+)?$/.test(String(x[1])) ? ` data-count="${esc(x[1])}"` : ''}>${esc(x[1])}</div><div class="mu">${x[0]} ›</div></div>` : `<div class="card"><div class="st"${/^\d+(\.\d+)?$/.test(String(x[1])) ? ` data-count="${esc(x[1])}"` : ''}>${esc(x[1])}</div><div class="mu">${x[0]}</div></div>`; }).join('')}</div>
+<div class="g"><div class="card"><b>By category</b>${st.byCategory.map(x => `<div class="mu">${esc(x.category)} (${x.n})</div><div class="bar" style="width:${Math.round(x.n / mx * 100)}%"></div>`).join('') || '<p class="mu">No data</p>'}</div>
+<div class="card"><b>Last 14 days</b><div class="mini" aria-hidden="true">${days.map(x => `<i title="${esc(String(x.day).slice(0, 10))}: ${x.n}" style="height:${Math.round(x.n / dm * 100)}%"></i>`).join('')}</div><p class="mu">Most frequent: ${st.frequentIssues.slice(0, 3).map(x => esc(x.subcategory) + ' (' + x.n + ')').join(', ') || '—'}</p></div></div>
+${hotCards(st)}
+<div class="row" style="margin-bottom:8px"><button type="button" class="p" data-act="go" data-v="comm">Post announcement</button><button type="button" data-act="csvdemo">Download CSV report</button></div>
+<div class="row">${sel('fs', 'Status', [['', 'All status'], ...STAT], f.s, { change: 'afilter-s', nolabel: 1 })}${sel('fk', 'Category', [['', 'All categories'], ...cats.map(c => c.name)], f.k, { change: 'afilter-k', nolabel: 1 })}${sel('fp', 'Priority', [['', 'All priorities'], 'Normal', 'High', 'Urgent'], f.p, { change: 'afilter-p', nolabel: 1 })}${hostels ? sel('fh', 'Hostel', [['', 'All hostels'], ...hostels.map(h => [h.id, h.name])], f.h, { change: 'afilter-h', nolabel: 1 }) : ''}</div>
+<div class="card tw"><table><thead><tr><th>ID<th>Student<th>Hostel<th>Room<th>Category<th>Priority<th>Status<th>Updated</tr></thead><tbody>${list.map(c => `<tr class="k" role="link" tabindex="0" data-act="go" data-v="det" data-p="${esc(c.id)}"><td>${esc(c.id)}<td>${c.is_private ? '🔒 Confidential' : esc(c.student_name)}<td>${esc(c.hostel)}<td>${c.room == null ? '—' : esc(c.room)}<td>${esc(c.category)}<td>${esc(c.priority)}<td>${badge(c)}<td>${fd(c.updated_at)}</tr>`).join('') || '<tr><td colspan="8" class="mu">No complaints match.</tr>'}</tbody></table></div>`;
+};
+
+V.students = async () => {
+  const sup = me.role === 'super_admin', [rs, hs] = await Promise.all([GET('/api/admin/residents'), sup ? GET('/api/admin/hostels') : null]);
+  const hsel = hs ? sel('rah', 'Hostel', hs.filter(h => h.active).map(h => [h.id, h.name]), '', { name: 'hostelId' }) : '';
+  return `<h2>Residents</h2>${card(`<b>Add resident ID</b><form data-submit="addres">${hsel}${fld('arn', 'Name', { name: 'name', max: 80 })}${fld('arr', 'Resident ID', { name: 'code', req: 1, min: 3, max: 30 })}${fld('arm', 'Mobile', { name: 'mobile', type: 'tel', mode: 'tel', req: 1, max: 16 })}${fld('aro', 'Room', { name: 'room', max: 20 })}<button class="p" type="submit">Add</button></form>`)}
+${card(`<b>Import from CSV</b><p class="mu">Columns: Resident ID, Name, Mobile, Room (a header row is fine). Up to 500 rows per file.</p>${hs ? sel('ibh', 'Hostel', hs.filter(h => h.active).map(h => [h.id, h.name]), '') : ''}<div class="row"><input type="file" id="csvf" accept=".csv,text/csv" aria-label="CSV file"><button type="button" data-act="impres">Import</button></div>`)}
+<div class="card tw"><table><thead><tr><th>ID<th>Name<th>Mobile<th>Room<th>Status${sup ? '<th>Hostel' : ''}<th></tr></thead><tbody>${rs.map(r => `<tr><td>${esc(r.code)}<td>${esc(r.name)}<td>${esc(r.mobile)}<td>${esc(r.room)}<td>${esc(r.status)}${sup ? '<td>' + esc(r.hostel) : ''}<td>${r.status === 'deactivated' ? '' : `<button type="button" class="d" data-act="deact" data-id="${esc(r.id)}">Deactivate</button>`}</tr>`).join('') || '<tr><td colspan="6" class="mu">No residents yet.</tr>'}</tbody></table></div>`;
+};
+
+V.staff = async () => {
+  const sup = me.role === 'super_admin', cats = await needCats(), [st, hs] = await Promise.all([GET('/api/admin/staff'), sup ? GET('/api/admin/hostels') : null]);
+  const names = Object.fromEntries((hs || []).map(h => [h.id, h.name]));
+  return `<h2>Staff</h2>${card(`<b>Add staff member</b><form data-submit="addstaff">${hs ? sel('ash', 'Hostel', hs.filter(h => h.active).map(h => [h.id, h.name]), '', { name: 'hostelId' }) : ''}${fld('asn', 'Name', { name: 'name', req: 1, min: 2, max: 80 })}<label for="asr">Role</label><input id="asr" name="role" list="roles" required minlength="2" maxlength="60"><datalist id="roles">${[...new Set([...cats.map(c => c.defaultStaffRole).filter(Boolean), 'Security Head', 'Gym Trainer'])].map(r => `<option value="${esc(r)}">`).join('')}</datalist>${fld('asp', 'Phone', { name: 'phone', type: 'tel', max: 20 })}<button class="p" type="submit">Add</button></form>`)}
+<div class="card tw"><table><thead><tr><th>Name<th>Role<th>Phone${sup ? '<th>Hostel' : ''}<th>Status<th></tr></thead><tbody>${st.map(s => `<tr><td>${esc(s.name)}<td>${esc(s.role)}<td>${esc(s.phone)}${sup ? '<td>' + esc(names[s.hostel_id] || s.hostel_id) : ''}<td>${s.active ? 'Active' : 'Inactive'}<td><button type="button" data-act="togglestaff" data-id="${esc(s.id)}" data-on="${s.active ? 0 : 1}">${s.active ? 'Deactivate' : 'Reactivate'}</button></tr>`).join('') || '<tr><td colspan="6" class="mu">No staff yet.</tr>'}</tbody></table></div>`;
+};
+
+V.hostels = async () => {
+  const [hs, ws] = await Promise.all([GET('/api/admin/hostels'), GET('/api/admin/wardens')]);
+  const hostelForm = h => `<details class="card"><summary><b>${esc(h.name)}</b> · ${esc(h.type)}${h.active ? '' : ' · inactive'}${h.geoEnforced ? '' : ' · location check OFF'}</summary><form data-submit="savehostel" data-id="${esc(h.id)}">${fld('hn' + h.id, 'Name', { name: 'name', req: 1, val: h.name })}${fld('ha' + h.id, 'Area', { name: 'area', val: h.area })}${fld('hd' + h.id, 'Address', { name: 'address', val: h.address })}${sel('ht' + h.id, 'Type', ['Boys', 'Girls', 'Co-ed'], h.type, { name: 'type' })}${fld('hp' + h.id, 'Phone', { name: 'phone', val: h.phone })}${fld('hb' + h.id, 'Beds', { name: 'beds', type: 'number', val: h.beds })}${fld('hf' + h.id, 'Facilities', { name: 'facilities', val: h.facilities })}${fld('hla' + h.id, 'Latitude', { name: 'lat', type: 'number', step: 'any', req: 1, val: h.lat })}${fld('hlo' + h.id, 'Longitude', { name: 'lng', type: 'number', step: 'any', req: 1, val: h.lng })}${fld('hr' + h.id, 'Allowed radius (metres, 50–2000)', { name: 'geoRadiusM', type: 'number', val: h.geoRadiusM })}<button type="button" data-act="hgeo">Use my current location</button><div class="chk"><input type="checkbox" id="hg${h.id}" name="geoEnforced"${h.geoEnforced ? ' checked' : ''}><label for="hg${h.id}">Require students to be at the hostel to submit (not for Safety / Urgent, Security or Rules &amp; Conduct)</label></div><div class="chk"><input type="checkbox" id="hx${h.id}" name="active"${h.active ? ' checked' : ''}><label for="hx${h.id}">Active</label></div><button class="p" type="submit">Save</button></form></details>`;
+  return `<h2>Hostels</h2><p class="mu">Stand at the hostel and tap “Use my current location” to set its real GPS point.</p>${hs.map(hostelForm).join('')}
+${card(`<b>Add hostel</b><form data-submit="addhostel">${fld('nhn', 'Name', { name: 'name', req: 1, min: 2, max: 100 })}${fld('nha', 'Area', { name: 'area', max: 80 })}${sel('nht', 'Type', ['Boys', 'Girls', 'Co-ed'], 'Boys', { name: 'type' })}${fld('nhla', 'Latitude', { name: 'lat', type: 'number', step: 'any', req: 1 })}${fld('nhlo', 'Longitude', { name: 'lng', type: 'number', step: 'any', req: 1 })}<div class="row"><button type="button" data-act="hgeo">Use my current location</button><button class="p" type="submit">Add hostel</button></div></form>`)}
+<h3>Wardens</h3><div class="card tw"><table><thead><tr><th>Name<th>Email<th>Hostel<th>Status<th></tr></thead><tbody>${ws.map(w => `<tr><td>${esc(w.name)}<td>${esc(w.email)}<td>${esc(w.hostel)}<td>${w.active ? 'Active' : 'Inactive'}<td>${w.active ? `<button type="button" class="d" data-act="deactwarden" data-id="${esc(w.id)}">Deactivate</button>` : ''}</tr>`).join('') || '<tr><td colspan="5" class="mu">No wardens yet.</tr>'}</tbody></table></div>
+${card(`<b>Create warden account</b><form data-submit="addwarden">${sel('awh', 'Hostel', hs.filter(h => h.active).map(h => [h.id, h.name]), '', { name: 'hostelId' })}${fld('awn', 'Name', { name: 'name', req: 1, min: 2, max: 80 })}${fld('awe', 'Email', { name: 'email', type: 'email', req: 1, max: 120 })}${fld('awp', 'Password (12+ characters)', { name: 'password', type: 'password', ac: 'new-password', req: 1, min: 12, max: 100 })}<button class="p" type="submit">Create warden</button></form>`)}`;
+};
+
+V.audit = async () => {
+  const l = await GET('/api/admin/audit');
+  return `<h2>Audit log</h2><div class="card tw"><table><thead><tr><th>When<th>Actor<th>Action<th>Entity</tr></thead><tbody>${l.map(a => `<tr><td>${fd(a.created_at)}<td>${esc(a.actor_id ?? '—')}<td>${esc(a.action)}<td>${esc(a.entity || '')} ${esc(a.entity_id || '')}</tr>`).join('') || '<tr><td colspan="4" class="mu">Nothing yet.</tr>'}</tbody></table></div>`;
+};
+
+// ---------- actions ----------
+function parseCSV(t) {
+  const rows = []; let r = [], c = '', q = false;
+  for (let i = 0; i < t.length; i++) {
+    const ch = t[i];
+    if (q) { if (ch === '"') { if (t[i + 1] === '"') { c += '"'; i++; } else q = false; } else c += ch; }
+    else if (ch === '"') q = true;
+    else if (ch === ',') { r.push(c); c = ''; }
+    else if (ch === '\n' || ch === '\r') { if (ch === '\r' && t[i + 1] === '\n') i++; r.push(c); c = ''; if (r.some(x => x.trim())) rows.push(r); r = []; }
+    else c += ch;
+  }
+  r.push(c); if (r.some(x => x.trim())) rows.push(r);
+  return rows;
+}
+const GACC = 15;   // GPS accuracy needed (m)
+window.hcToast = toast;
+const getPos = () => new Promise((ok, no) => !navigator.geolocation ? no(new Error('Location is not supported on this device')) : navigator.geolocation.getCurrentPosition(q => ok(q.coords), e => no(new Error(e.code === 1 ? 'Location permission denied. Allow location access to submit.' : 'Could not get location. Try again.')), { enableHighAccuracy: true, timeout: 20000, maximumAge: 0 }));
+const imgErr = f => !/^image\/(jpeg|png|webp)$/.test(f.type) ? 'Photos must be JPEG, PNG or WebP' : f.size > 2e6 ? 'Each photo must be under 2 MB' : '';
+const afterLogin = async user => { me = user; FLOW = {}; F = {}; await refreshUnread(); go(dash()); };
+
+const ACT = {
+  menu: () => (MO ? closeMenu() : openMenu()),
+  async addpost(form) { const d = formData(form); await POST('/api/posts', { kind: d.kind, title: d.title, body: d.body, pinned: form.elements.pinned.checked, hostel_id: d.hostel_id }); toast('Announcement posted'); render(); },
+  async pinpost(el) { await PATCH('/api/posts/' + el.dataset.id, {}); render(); },
+  async delpost(el) { if (!confirm('Delete this announcement?')) return; await api('DELETE', '/api/posts/' + el.dataset.id); toast('Announcement deleted'); render(); },
+  tile: el => { F.m = el.dataset.s ? { s: el.dataset.s } : {}; go('mine'); },
+  async atile(el) { F.a = { ...(el.dataset.s && { s: el.dataset.s }), ...(el.dataset.p && { p: el.dataset.p }) }; await render(); $('m').querySelector('.tw')?.scrollIntoView({ behavior: 'smooth' }); },
+  closemenu: () => closeMenu(),
+  theme: () => { const n = rootEl.dataset.theme === 'dark' ? 'light' : 'dark'; setTheme(n, true); toast(n === 'dark' ? 'Dark theme on' : 'Light theme on', 1300); },
+  guide: () => { closeMenu(false); setTimeout(showGuide, 120); },
+  gdclose: () => { const top = scrollY < 10; hideGuide(); if (top) setTimeout(() => scrollBy({ top: Math.round(innerHeight * .55), behavior: matchMedia('(prefers-reduced-motion:reduce)').matches ? 'auto' : 'smooth' }), 260); },
+  go: el => go(el.dataset.v, el.dataset.p),
+  retry: () => render(),
+  csvdemo: () => toast('CSV export is available in the live version'),
+  back: () => go(isAdm() ? 'adash' : 'mine'),
+  reg: el => go('sreg', Number(el.dataset.h)),
+  logout: async () => { try { await POST('/api/auth/logout'); } catch { /* already signed out */ } me = null; unread = 0; F = {}; go('home'); },
+
+  async login(form) {
+    const d = formData(form), r = await POST('/api/auth/login', { identifier: d.identifier, password: d.password });
+    FLOW.ev = { challengeId: r.challengeId, hint: r.emailHint, dev: r.devCode }; go('ever');
+  },
+  async verify(form) {
+    const r = await POST('/api/auth/login/verify', { challengeId: FLOW.ev.challengeId, code: formData(form).code.trim() });
+    await afterLogin(r.user);
+  },
+  async forgot(form) {
+    const r = await POST('/api/auth/password/forgot', { identifier: formData(form).identifier });
+    FLOW.rs = { challengeId: r.challengeId, dev: r.devCode }; toast(r.message); go('reset');
+  },
+  async reset(form) {
+    const d = formData(form); await POST('/api/auth/password/reset', { challengeId: FLOW.rs.challengeId, code: d.code.trim(), password: d.password });
+    toast('Password updated. Please log in.'); go('slogin');
+  },
+  async regstart(form) {
+    const d = formData(form), r = await POST('/api/auth/register/start', { hostelId: Number(d.hostelId), residentId: d.residentId, mobile: d.mobile.replace(/[\s-]/g, ''), email: d.email, name: d.name, room: d.room || undefined, password: d.password });
+    FLOW.rg = { challengeId: r.challengeId, dev: r.devCode }; go('sreg', par);
+  },
+  async regverify(form) {
+    await POST('/api/auth/register/verify', { challengeId: FLOW.rg.challengeId, code: formData(form).code.trim() });
+    toast('Account created. Please log in.'); go('slogin');
+  },
+  regcancel: () => { FLOW = {}; go('sreg', par); },
+  async chpw(form) {
+    const d = formData(form); await POST('/api/auth/password/change', { current: d.current, password: d.password });
+    form.reset(); toast('Password changed. Other devices were signed out.');
+  },
+
+  // new complaint
+  newcat: el => { NEW = { c: el.dataset.c }; render(); },
+  newreset: () => { NEW = {}; render(); },
+  async geo(el) {
+    const gs = $('gs'); gs.textContent = 'Checking location…';
+    try {
+      const p = await getPos();
+      if (p.accuracy > GACC) { NEW.geo = null; gs.textContent = `GPS too imprecise (${Math.round(p.accuracy)} m, need ${GACC} m or better). Move outdoors or near a window and retry.`; return; }
+      NEW.geo = { lat: p.latitude, lng: p.longitude, accuracy: p.accuracy, t: Date.now() }; gs.textContent = geoText();
+    } catch (e) { NEW.geo = null; gs.textContent = e.message; }
+  },
+  review(form) {
+    const d = formData(form), file = form.elements.photo.files[0];
+    if (!GEO_FREE.includes(NEW.c) && (!NEW.geo || Date.now() - NEW.geo.t > 10 * 60e3)) return toast('Verify your location at the hostel first');
+    if (file) { const e = imgErr(file); if (e) return toast(e); NEW.file = file; }
+    NEW.d = { title: d.title.trim(), subcategory: d.subcategory, description: d.description.trim(), location: (d.location || '').trim(), room: (d.room || '').trim(), priority: d.priority, isPrivate: !!form.elements.isPrivate.checked, floor: d.floor || '', when: d.when || '', whenText: (d.whenText || '').trim(), involved: (d.involved || '').trim() };
+    NEW.cf = 1; render();
+  },
+  editc: () => { NEW.cf = 0; render(); },
+  async submitc() {
+    const d = NEW.d, r = await POST('/api/complaints', { category: NEW.c, ...d, ...(GEO_FREE.includes(NEW.c) ? {} : { geo: { lat: NEW.geo.lat, lng: NEW.geo.lng, accuracy: NEW.geo.accuracy } }) });
+    let note = `Submitted: ${r.id}`;
+    if (NEW.file) { try { const fdm = new FormData(); fdm.append('files', NEW.file); await POST(`/api/complaints/${encodeURIComponent(r.id)}/attachments`, fdm); } catch (e) { note += `. Photo not attached: ${e.message}`; } }
+    NEW = {}; toast(note, 4500); go('det', r.id);
+  },
+  async more() {
+    const f = F.m || {}, off = F.mp.items.length, next = await GET('/api/complaints?' + qs({ status: f.s, category: f.k, q: f.q, limit: 25, offset: off }));
+    F.mp.items = F.mp.items.concat(next); F.mp.more = next.length === 25;
+    $('ml').innerHTML = complaintList(F.mp.items); $('mm').innerHTML = F.mp.more ? '<button type="button" data-act="more">Load more</button>' : '';
+  },
+
+  // complaint detail
+  async reply(form) { await POST(`/api/complaints/${encodeURIComponent(par)}/messages`, { body: formData(form).body.trim() }); render(); },
+  async inote(form) { await POST(`/api/complaints/${encodeURIComponent(par)}/messages`, { body: formData(form).body.trim(), internal: true }); render(); },
+  async setstatus(el) {
+    const note = ($('snote')?.value || '').trim();
+    await PATCH(`/api/complaints/${encodeURIComponent(par)}`, { status: el.dataset.s, ...(note ? { note } : {}) }); toast('Status: ' + el.dataset.s); render();
+  },
+  async resolve(el) {
+    const ok = el.dataset.ok === '1', body = ok ? { resolved: true, rating: Number($('rt').value), comment: $('fbt').value.trim() || undefined } : { resolved: false };
+    await POST(`/api/complaints/${encodeURIComponent(par)}/resolution`, body); toast(ok ? 'Thanks for your feedback' : 'Complaint reopened'); render();
+  },
+  async upload() {
+    const files = [...$('up').files]; if (!files.length) return toast('Choose a photo first');
+    if (files.length > 3) return toast('Up to 3 photos at a time');
+    for (const f of files) { const e = imgErr(f); if (e) return toast(e); }
+    const fdm = new FormData(); files.forEach(f => fdm.append('files', f));
+    await POST(`/api/complaints/${encodeURIComponent(par)}/attachments`, fdm); toast('Photo uploaded'); render();
+  },
+
+  // admin: residents
+  async addres(form) {
+    const d = formData(form); await POST('/api/admin/residents', { ...(d.hostelId ? { hostelId: Number(d.hostelId) } : {}), code: d.code.trim(), name: d.name || undefined, mobile: d.mobile.replace(/[\s-]/g, ''), room: d.room || undefined });
+    toast('Resident ID added'); render();
+  },
+  async impres() {
+    const file = $('csvf').files[0]; if (!file) return toast('Choose a CSV file first');
+    let rows = parseCSV(await file.text()); if (rows.length && !/^\+?\d[\d\s-]{8,}$/.test((rows[0][2] || '').trim())) rows = rows.slice(1);   // drop header row
+    const items = rows.map(r => ({ code: (r[0] || '').trim(), name: (r[1] || '').trim() || undefined, mobile: (r[2] || '').replace(/[\s-]/g, ''), room: (r[3] || '').trim() || undefined }));
+    const ok = items.filter(r => r.code.length >= 3 && /^\+?\d{10,13}$/.test(r.mobile)), skippedBad = items.length - ok.length;
+    if (!ok.length) return toast('No valid rows found. Columns: Resident ID, Name, Mobile, Room');
+    const hid = $('ibh')?.value; let added = 0, dup = 0;
+    for (let i = 0; i < ok.length; i += 500) { const r = await POST('/api/admin/residents/bulk', { ...(hid ? { hostelId: Number(hid) } : {}), rows: ok.slice(i, i + 500) }); added += r.added; dup += r.skipped; }
+    toast(`Added ${added}, already existed ${dup}${skippedBad ? `, invalid ${skippedBad}` : ''}`, 5000); render();
+  },
+  async deact(el) { if (!confirm('Deactivate this resident? Their account (if any) will be signed out and disabled.')) return; await POST(`/api/admin/residents/${encodeURIComponent(el.dataset.id)}/deactivate`); render(); },
+
+  // study hub
+  stdom: el => { F.st = { ...F.st, d: el.dataset.d, s: null }; $('stl').innerHTML = studyBody(); },
+  stsub: el => { F.st = { ...F.st, s: el.dataset.s }; $('stl').innerHTML = studyBody(); },
+  stback: () => { F.st = F.st?.s ? { ...F.st, s: null } : { ...F.st, d: null, s: null }; $('stl').innerHTML = studyBody(); },
+  stsaved: () => { F.st = { ...F.st, saved: !F.st?.saved }; render(); },
+  stsave: el => { const S = stLoad(), id = Number(el.dataset.id), i = S.saved.indexOf(id); if (i < 0) S.saved.push(id); else S.saved.splice(i, 1); if (!stStore()) toast('This browser blocks storage, so saved items last only until you close the page.', 4500); $('stl').innerHTML = studyBody(); },
+  stdone: el => { const S = stLoad(), id = Number(el.dataset.id), i = S.done.indexOf(id); if (i < 0) S.done.push(id); else S.done.splice(i, 1); if (!stStore()) toast('This browser blocks storage, so progress lasts only until you close the page.', 4500); $('stl').innerHTML = studyBody(); },
+  async streport(el) { await POST('/api/study/report', { id: Number(el.dataset.id) }); toast('Thanks. The warden has been told this link may be broken.', 4000); },
+  async stsuggest(form) {
+    const d = formData(form), [domain, subject] = d.pair.split('|');
+    await POST('/api/study/suggest', { title: d.title.trim(), url: d.url.trim(), source: d.source.trim(), type: d.type, domain, subject, own: form.elements.own.checked });
+    form.reset(); toast('Thanks! A warden will review it before it appears.', 4500);
+  },
+  async stadd(form) { const d = formData(form), [domain, subject] = d.pair.split('|'); await POST('/api/admin/study', { title: d.title.trim(), url: d.url.trim(), source: d.source.trim(), type: d.type, domain, subject }); form.reset(); toast('Resource added'); render(); },
+  async stdecide(el) { await PATCH('/api/admin/study/' + encodeURIComponent(el.dataset.id), { status: el.dataset.s }); toast(el.dataset.s === 'approved' ? 'Approved. Students can see it now.' : 'Rejected'); render(); },
+  async stdel(el) { if (!confirm('Remove this resource for all students?')) return; await api('DELETE', '/api/admin/study/' + encodeURIComponent(el.dataset.id)); toast('Resource removed'); render(); },
+
+  // admin: staff
+  async addstaff(form) { const d = formData(form); await POST('/api/admin/staff', { ...(d.hostelId ? { hostelId: Number(d.hostelId) } : {}), name: d.name.trim(), role: d.role.trim(), phone: d.phone || undefined }); toast('Staff added'); render(); },
+  async togglestaff(el) { await PATCH(`/api/admin/staff/${encodeURIComponent(el.dataset.id)}`, { active: el.dataset.on === '1' }); render(); },
+
+  // super-admin: hostels & wardens
+  async hgeo(el) {
+    const f = el.closest('form'); try { const p = await getPos(); f.elements.lat.value = p.latitude.toFixed(6); f.elements.lng.value = p.longitude.toFixed(6); toast(`Location filled (accuracy ${Math.round(p.accuracy)} m). Save to apply.`); } catch (e) { toast(e.message); }
+  },
+  async savehostel(form) {
+    const d = formData(form), lat = Number(d.lat), lng = Number(d.lng); if (d.lat === '' || d.lng === '' || !isFinite(lat) || !isFinite(lng)) return toast('Enter a valid latitude and longitude');
+    await PATCH(`/api/admin/hostels/${encodeURIComponent(form.dataset.id)}`, { name: d.name.trim(), area: d.area, address: d.address, type: d.type, phone: d.phone, beds: Number(d.beds || 0), facilities: d.facilities, lat, lng, geoRadiusM: Number(d.geoRadiusM || 500), geoEnforced: !!form.elements.geoEnforced.checked, active: !!form.elements.active.checked });
+    HOSTELS = null; toast('Hostel saved'); render();
+  },
+  async addhostel(form) {
+    const d = formData(form), lat = Number(d.lat), lng = Number(d.lng); if (!isFinite(lat) || !isFinite(lng)) return toast('Enter a valid latitude and longitude');
+    await POST('/api/admin/hostels', { name: d.name.trim(), area: d.area || undefined, type: d.type, lat, lng }); HOSTELS = null; toast('Hostel added'); render();
+  },
+  async addwarden(form) { const d = formData(form); await POST('/api/admin/wardens', { hostelId: Number(d.hostelId), name: d.name.trim(), email: d.email.trim(), password: d.password }); toast('Warden created'); render(); },
+  async deactwarden(el) { if (!confirm('Deactivate this warden? They will be signed out.')) return; await POST(`/api/admin/wardens/${encodeURIComponent(el.dataset.id)}/deactivate`); render(); },
+};
+
+// live filters and dropdown changes
+const INPUT = { stq: el => { F.st = { ...F.st, q: el.value }; $('stl').innerHTML = studyBody(); }, menuq: el => { MQ = el.value; $('mlist').innerHTML = menuListHTML(); }, dirq: el => { F.dq = el.value; $('hl').innerHTML = hostelCards(); } };
+const CHANGE = {
+  dirtype: el => { F.dt = el.value; $('hl').innerHTML = hostelCards(); },
+  'mfilter-q': el => { F.m = { ...F.m, q: el.value.trim() }; render(); },
+  'mfilter-s': el => { F.m = { ...F.m, s: el.value }; render(); },
+  'mfilter-k': el => { F.m = { ...F.m, k: el.value }; render(); },
+  'afilter-s': el => { F.a = { ...F.a, s: el.value }; render(); },
+  'afilter-k': el => { F.a = { ...F.a, k: el.value }; render(); },
+  'afilter-p': el => { F.a = { ...F.a, p: el.value }; render(); },
+  'afilter-h': el => { F.a = { ...F.a, h: el.value }; render(); },
+  async setverify(el) { await PATCH(`/api/complaints/${encodeURIComponent(par)}`, { verified: el.value }); toast('Verification saved'); render(); },
+  async setprio(el) { await PATCH(`/api/complaints/${encodeURIComponent(par)}`, { priority: el.value }); toast('Priority updated'); render(); },
+  async assign(el) { await PATCH(`/api/complaints/${encodeURIComponent(par)}`, { assignedStaffId: el.value ? Number(el.value) : null }); toast('Assignment updated'); render(); },
+};
+
+async function run(fn, el, btn) {
+  if (btn) btn.disabled = true;
+  try { await fn(el); } catch (e) { toast(e.message || 'Something went wrong', 4500); }
+  finally { if (btn && btn.isConnected) btn.disabled = false; }
+}
+document.addEventListener('click', e => {
+  const el = e.target.closest('[data-act]'); if (!el || !ACT[el.dataset.act]) return;
+  run(ACT[el.dataset.act], el, el.tagName === 'BUTTON' ? el : null);
+});
+document.addEventListener('keydown', e => {   // keyboard access for clickable cards / table rows
+  if ((e.key === 'Enter' || e.key === ' ') && e.target.matches('[role="link"][data-act]')) { e.preventDefault(); e.target.click(); }
+});
+document.addEventListener('submit', e => {
+  const f = e.target.closest('[data-submit]'); if (!f || !ACT[f.dataset.submit]) return;
+  e.preventDefault(); run(ACT[f.dataset.submit], f, f.querySelector('[type="submit"]'));
+});
+document.addEventListener('input', e => { const n = e.target.dataset?.input; if (n && INPUT[n]) INPUT[n](e.target); });
+document.addEventListener('change', e => { const n = e.target.dataset?.change; if (n && CHANGE[n]) run(CHANGE[n], e.target, null); });
+
+setInterval(() => { if (me && !document.hidden) refreshUnread(); }, 30000);   // keep the bell live
+// ---------- start ----------
+try { history.replaceState({ v: 'home', p: null }, ''); } catch { /* sandboxed frame */ }
+(async () => {
+  try { me = (await GET('/api/me')).user; refreshUnread(); } catch { me = null; }
+  render();
+})();
+setInterval(() => { if (me && !document.hidden) refreshUnread(); }, 60000);
+})();
+</script>
+</body></html>
